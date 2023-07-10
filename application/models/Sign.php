@@ -1,0 +1,39 @@
+<?php
+    class Sign extends CI_Model{
+
+        function verifLog($tab1){
+            $tab_base = $this->getValeur('log1');
+            // var_dump($tab1);
+            // var_dump($tab_base);
+            for ($i=0; $i < count($tab_base); $i++) { 
+                if($tab_base[$i]->email==$tab1['email'] && $tab_base[$i]->mdp==$tab1['mdp']){
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        public function getValeur($nom_table) {
+            $query = $this->db->get($nom_table);
+            return $query->result();
+        }
+        
+
+        function IsValuesNull($tab){
+            foreach($tab as $value){
+                if(empty($value)){
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        function insertSign_in($data){
+            $this->db->insert('inscr', $data);
+            // echo $this->db->affected_rows();
+            return $this->db->insert_id();          // récupérer l'identifiant (ID) généré lors de l'insertion
+                                                    // d'une nouvelle ligne dans une table de base de données à l'aide de CodeIgniter.
+
+        }
+    }
+?>
