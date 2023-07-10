@@ -18,6 +18,11 @@
             return $query->result();
         }
         
+        public function getValeur($table){
+            $query = $this->db->get($table);
+            return $query->result();
+
+        } 
 
         function IsValuesNull($tab){
             foreach($tab as $value){
@@ -31,6 +36,12 @@
         function insertSign_in($data){
             $this->db->insert('utilisateur', $data);
             // echo $this->db->affected_rows();
+            
+            $id = $this->db->insert_id();
+            $this->db->insert('porte_monnai',array( // creer un porte monnai pour le
+                'idUser' => $id,                    // nouveau user
+                'valeur' => 0
+            ));
             return $this->db->insert_id();          // récupérer l'identifiant (ID) généré lors de l'insertion
                                                     // d'une nouvelle ligne dans une table de base de données à l'aide de CodeIgniter.
 
