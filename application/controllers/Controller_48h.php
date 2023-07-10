@@ -19,19 +19,68 @@ class Controller_48h extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+    //----------------- REDIRECTION FRONT -----------------//
+
+    public function toHome(){
+        $this->load->helper('url');
+		$this->load->view('home');
+    }
+    public function toProfilUser(){
+        $this->load->helper('url');
+		$this->load->view('ProfilUser');
+    }
+
+    public function toAddCompletion(){
+        $this->load->helper('url');
+		$this->load->view('AddCompletion');
+    }
+
+    public function toListCode(){
+        $this->load->helper('url');
+		$this->load->view('listCode');
+    }
+
+    public function toWallet(){
+        $this->load->helper('url');
+		$this->load->view('wallet');
+    }
+
+    //----------------- REDIRECTION BACK -----------------//
+
+    public function toHomeAdmin(){
+        $this->load->helper('url');
+		$this->load->view('HomeAdmin');
+    }
+
+    public function toListeRegime(){
+        $this->load->helper('url');
+		$this->load->view('listRegime');
+    }
+    
+    public function toListActivite(){
+        $this->load->helper('url');
+		$this->load->view('listActivite');
+    }
+
+    public function toAddDish(){
+        $this->load->helper('url');
+		$this->load->view('AddDish');
+    }
+    
     public function log_admin(){
         $tabLog = array(
             'nom' => $this->input->post('admin_nom'),
             'email' => $this->input->post('admin_email'),
-            'mdp' => $this->input->post('sign_up_mdp')
+            'mdp' => $this->input->post('admin_mdp')
         );
         $this->load->model('Admin');
         $this->load->model('Sign');
         $val = $this->Sign->IsValuesNull($tabLog);
-        // echo $val;
+        // echo "val = ".$val;
+        // var_dump($tabLog);
         if($val==0){                                        // procede si les valeurs ne sont pas nulles
             $authentif = $this->Admin->verifLog($tabLog);    /// insertion dans la table correspondant au sign up
-
+            // echo $authentif;
             if($authentif==1){                                  // si l'authenticite est verifie vrai
                 $this->load->helper('url');
 		        $this->load->view('HomeAdmin');
@@ -127,7 +176,8 @@ class Controller_48h extends CI_Controller {
         $this->session->sess_destroy();
     
         // Rediriger l'utilisateur vers une page de connexion ou une autre page appropriée
-        $this->load->view('login');
+            $this->load->helper('url');
+            $this->load->view('login');
     }
     
 }

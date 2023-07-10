@@ -32,10 +32,10 @@
         function IsValuesNull($tab){
             foreach($tab as $value){
                 if(empty($value)){
-                    return 1;
+                    return 1;           // if a value is null
                 }
             }
-            return 0;
+            return 0;                   // if not
         }
 
         function insertSign_in($data){

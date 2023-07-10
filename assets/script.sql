@@ -1,11 +1,9 @@
 ---------------------------------- 10-07-2023 ------------------------------------------
 
-CREATE ROLE regime LOGIN PASSWORD 'regime';
 CREATE DATABASE regime;
 
-ALTER DATABASE regime OWNER TO regime;
 
-\c regime regime;
+\c regime;
 
 
 --------------------------- admin --------------------------------------
@@ -19,8 +17,8 @@ CREATE TABLE IF NOT EXISTS administrateur(
     mdp VARCHAR(10)
 );
 
-INSERT INTO administrateur(nom, mdp) VALUES('Johan', '0000'),
-                                            ('Erica', '01234');
+INSERT INTO administrateur(nom, email,mdp) VALUES('Johan','Johan@yahoo','0000'),
+                                            ('Erica','Erica@gmail','01234');
 
 --------------------------- utilisateur --------------------------------------------
 

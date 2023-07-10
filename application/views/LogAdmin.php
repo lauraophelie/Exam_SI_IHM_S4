@@ -25,7 +25,7 @@ $base_url = base_url();
             <section class="wrapper">
               <div class="form signup">
                 <header>Sign in</header>
-                <form action="#" method="post">
+                <form action="<?php echo base_url('Controller_48h/log_admin');?>" method="post">
                   <input type="text" placeholder="Name" name="admin_nom" required />
                   <input type="email" placeholder="Email address" name="admin_email" required />
                   <input type="password" placeholder="Password" name="admin_mdp" required />

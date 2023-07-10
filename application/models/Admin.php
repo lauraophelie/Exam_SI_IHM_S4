@@ -129,7 +129,7 @@
             // var_dump($tab1);
             // var_dump($tab_base);
             for ($i=0; $i < count($tab_base); $i++) { 
-                if($tab_base[$i]->email==$tab1['nom'] && $tab_base[$i]->email==$tab1['email'] && $tab_base[$i]->mdp==$tab1['mdp']){
+                if($tab_base[$i]->nom==$tab1['nom'] && $tab_base[$i]->email==$tab1['email'] && $tab_base[$i]->mdp==$tab1['mdp']){
                     return 1;
                 }
             }
