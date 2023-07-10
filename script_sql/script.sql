@@ -135,3 +135,49 @@ CREATE OR REPLACE VIEW v_plat AS(
     JOIN type_plat t ON p.type_plat = t.id
 );
 
+INSERT INTO plat(designation, type_plat, image_path) VALUES
+                ('Macaroni & Tomates fraiche', 'TYP2', 'images/im1.jpg'),
+                ('Tartines', 'TYP1', 'images/im2.jpg'),
+                ('Macaronni', 'TYP2', 'images/im3.jpg'),
+                ('Smooothies aux fruits', 'TYP3', 'images/im4.jpg'),
+                ('Céréales aux fruits', 'TYP3', 'images/im5.jpg'),
+                ('Macaroni à la sauce', 'TYP4', 'images/im6.jpg'),
+                ('Barquette de fruits', 'TYP3', 'images/im7.jpg'),
+                ('Fruits & Miel', 'TYP3', 'images/im8.jpg'),
+                ('Smoothies', 'TYP1', 'images/im9.jpg'),
+                ('Céréales au yaourt et aux fruits', 'TYP1', 'images/im10.jpg'),
+                ('Oeuf, Poulet, Fromage', 'TYP4', 'images/im11.jpg'),
+                ('Tourte aux légumes', 'TYP2', 'images/im12.jpg'),
+                ('Poulet grillé et légumes', 'TYP4', 'images/im14.jpg');
+
+INSERT INTO proportion_plat(plat, viande, legume, feculent, fruit, huile, sucre) VALUES
+                            ('PLA1', 0, 50, 25, 0, 25, 0),
+                            ('PLA2', 0, 0, 50, 45, 0, 5),
+                            ('PLA3', 0, 45, 50, 0, 5, 0),
+                            ('PLA4', 0, 0, 0, 70, 0, 30),
+                            ('PLA5', 0, 0, 25, 50, 0, 25),
+                            ('PLA6', 0, 0, 75, 0, 25, 0),
+                            ('PLA7', 0, 0, 0, 85, 0, 15),
+                            ('PLA8', 0, 0, 0, 85, 0, 15),
+                            ('PLA9', 0, 0, 0, 85, 0, 15),
+                            ('PLA10', 0, 0, 0, 85, 0, 15),
+                            ('PLA11', 25, 0, 25, 0, 5, 45),
+                            ('PLA12', 5, 45, 25, 0, 25, 0),
+                            ('PLA13', 45, 45, 0, 0, 10, 0);
+
+------------------------------------- sport ----------------------------------------------
+
+
+CREATE SEQUENCE sport_id_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS sport(
+    id VARCHAR(8) PRIMARY KEY DEFAULT CONCAT('SPO', nextval('sport_id_seq')),
+    designation VARCHAR(75)
+);
+
+INSERT INTO sport(designation) VALUES('Marche à pieds'),
+                                    ('Natation'),
+                                    ('Course à pieds'),
+                                    ('Pilates'),
+                                    ('Musculation');
+
