@@ -112,6 +112,10 @@ class Controller_48h extends CI_Controller {
     public function create_session($userdata) {
         // Charger la bibliothèque de sessions
         $this->load->library('session');
+        if (!is_dir(APPPATH . 'sessions')) {
+            mkdir(APPPATH . 'sessions', 0700);
+        }
+        
         $this->session->set_userdata($userdata);
     }
 
