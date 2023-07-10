@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <form action="<?php echo base_url('Controller_48h/login'); ?>" method="post">
                     <input type="text" placeholder="Email address" name="sign_up_email" required />
                     <input type="password" placeholder="Password" name="sign_up_mdp" required />
-                    <a href="<?php echo base_url('Controller_48h/admin');?>" class="btn btn-light">Sign in as an admin</a>
+                    <a href="<?php echo base_url('Controller_48h/log_admin');?>" class="btn btn-light">Sign in as an admin</a>
                     <a href="./forgotpassword.html">Forgot password?</a>
                     <input type="submit" class="btn btn-outline-success" value="Login" />
                   </form>

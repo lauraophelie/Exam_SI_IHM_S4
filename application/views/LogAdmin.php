@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 ?>
 <!DOCTYPE html>
@@ -25,8 +26,9 @@ $base_url = base_url();
               <div class="form signup">
                 <header>Sign in</header>
                 <form action="#" method="post">
-                  <input type="text" placeholder="Email address" required />
-                  <input type="password" placeholder="Password" required />
+                  <input type="text" placeholder="Name" name="admin_nom" required />
+                  <input type="email" placeholder="Email address" name="admin_email" required />
+                  <input type="password" placeholder="Password" name="admin_mdp" required />
                   <input type="submit" class="btn btn-outline-light" value="Connect" />
                 </form>
               </div>

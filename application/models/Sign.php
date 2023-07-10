@@ -2,7 +2,7 @@
     class Sign extends CI_Model{
 
         function verifLog($tab1){
-            $tab_base = $this->getValeur('log1');
+            $tab_base = $this->getValeur();
             // var_dump($tab1);
             // var_dump($tab_base);
             for ($i=0; $i < count($tab_base); $i++) { 
@@ -13,8 +13,8 @@
             return 0;
         }
 
-        public function getValeur($nom_table) {
-            $query = $this->db->get($nom_table);
+        public function getValeur() {
+            $query = $this->db->get('utilisateur');
             return $query->result();
         }
         
@@ -29,7 +29,7 @@
         }
 
         function insertSign_in($data){
-            $this->db->insert('inscr', $data);
+            $this->db->insert('utilisateur', $data);
             // echo $this->db->affected_rows();
             return $this->db->insert_id();          // récupérer l'identifiant (ID) généré lors de l'insertion
                                                     // d'une nouvelle ligne dans une table de base de données à l'aide de CodeIgniter.
