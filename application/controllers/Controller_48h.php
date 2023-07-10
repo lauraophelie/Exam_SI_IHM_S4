@@ -18,6 +18,40 @@ class Controller_48h extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+    public function log_admin(){
+        $tabLog = array(
+            'nom' => $this->input->post('admin_nom'),
+            'email' => $this->input->post('admin_email'),
+            'mdp' => $this->input->post('sign_up_mdp')
+        );
+        $this->load->model('Admin');
+        $this->load->model('Sign');
+        $val = $this->Sign->IsValuesNull($tabLog);
+        // echo $val;
+        if($val==0){                                        // procede si les valeurs ne sont pas nulles
+            $authentif = $this->Admin->verifLog($tabLog);    /// insertion dans la table correspondant au sign up
+
+            if($authentif==1){                                  // si l'authenticite est verifie vrai
+                $this->load->helper('url');
+		        $this->load->view('HomeAdmin');
+            }
+            else{                                               // sinon
+                $this->redirect_admin();
+            }
+        }
+        else{                                               // sinon redirige vers la page de login
+            $this->redirect_admin();
+
+        }
+    }
+    
+
+    public function redirect_admin(){
+        $this->load->helper('url');
+
+		$this->load->view('LogAdmin');
+    } 
 	public function index()
 	{
 		$this->load->helper('url');
