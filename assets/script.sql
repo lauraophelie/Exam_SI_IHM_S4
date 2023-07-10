@@ -206,12 +206,12 @@ CREATE TABLE IF NOT EXISTS regime(
     tarif DECIMAL NOT NULL
 );
 
-INSERT INTO regime(designation, duree, tarif) VALUES('Regime été', 15, 250000),
-                                                    ('Regime intensif', 30, 500000),
-                                                    ('Regime light', 15, 350000);
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime été'),
+                                                    ('Regime intensif'),
+                                                    ('Regime light');
 
-INSERT INTO regime(designation, duree, tarif) VALUES('Regime hiver', 15, 150000),
-                                                    ('Regime intensif été', 15, 600000);
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime hiver'),
+                                                    ('Regime intensif été');
 
 
 CREATE TABLE IF NOT EXISTS regime_plat(
@@ -294,35 +294,36 @@ ALTER TABLE regime DROP COLUMN tarif;
 CREATE TABLE IF NOT EXISTS tarifs_regime(
     regime VARCHAR(8) REFERENCES regime(id),
     duree INTEGER,
-    tarif DECIMAL
+    tarif DECIMAL,
+    poids DECIMAL
 );
 
-INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
-                        ('REG1', 1, 150000),
-                        ('REG1', 5, 300000),
-                        ('REG1', 15, 450000),
-                        ('REG1', 30, 650000);
+INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
+                        ('REG1', 1, 150000,0.3),
+                        ('REG1', 5, 300000,0.7),
+                        ('REG1', 15, 450000,4),
+                        ('REG1', 30, 650000,10);
 
-INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
-                        ('REG2', 5, 250000),
-                        ('REG2', 10, 400000),
-                        ('REG2', 15, 450000),
-                        ('REG2', 30, 650000);
+INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
+                        ('REG2', 5, 250000,2),
+                        ('REG2', 10, 400000,4),
+                        ('REG2', 15, 450000,11),
+                        ('REG2', 30, 650000,20);
 
-INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
-                        ('REG3', 5, 250000),
-                        ('REG3', 15, 450000),
-                        ('REG3', 30, 650000);
+INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
+                        ('REG3', 5, 250000,1.5),
+                        ('REG3', 15, 450000,10),
+                        ('REG3', 30, 650000,21);
 
-INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
-                        ('REG4', 5, 350000),
-                        ('REG4', 15, 550000),
-                        ('REG4', 30, 650000);
+INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
+                        ('REG4', 5, 350000,3),
+                        ('REG4', 15, 550000,7),
+                        ('REG4', 30, 750000,23);
 
-INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
-                        ('REG5', 10, 300000),
-                        ('REG5', 15, 450000),
-                        ('REG5', 20, 650000);
+INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
+                        ('REG5', 10, 300000,3),
+                        ('REG5', 15, 350000,6),
+                        ('REG5', 20, 550000,18);
 
 ----------------------------------------- vue -----------------------------------------
 
@@ -378,4 +379,47 @@ CREATE OR REPLACE VIEW v_tarifs_regime AS(
         t.tarif
     FROM tarifs_regime t 
     JOIN regime reg ON t.regime = reg.id
+);
+
+----------------------------------------- code -----------------------------------------
+
+
+CREATE TABLE IF NOT EXISTS code(
+    idCode VARCHAR(10) PRIMARY KEY ,
+    valeur DECIMAL,
+    etat VARCHAR(20)
+);
+
+ALTER TABLE code ADD CONSTRAINT code_unique UNIQUE (idCode);
+
+INSERT INTO code(idCode, valeur, etat) VALUES
+                        ('COD112234', 1000, 1),
+                        ('COD192234', 1000, 1),
+                        ('COD116234', 1000, 1),
+                        ('COD112234', 2000, 1),
+                        ('COD112254', 2000, 1);
+                        ('COD412254', 2000, 1);
+                        ('COD212254', 2000, 1);
+                        ('COD111254', 5000, 1);
+                        ('COD112354', 5000, 1);
+                        ('COD112251', 5000, 1);
+                        ('COD112289', 5000, 1);
+                        ('COD156251', 10000, 1);
+                        ('COD342251', 10000, 1);
+                        ('COD212251', 10000, 1);
+                        ('COD112251', 15000, 1);
+                        ('COD322251', 15000, 1);
+                        ('COD342211', 15000, 1);
+                        ('COD342221', 15000, 1);
+                        ('COD102250', 20000, 1);
+                        ('COD102259', 50000, 1);
+
+-----------------------------porte monnaie------------------------
+
+CREATE SEQUENCE porte_monnai_id_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS porte_monnai(
+    idPorte_monnai VARCHAR(10) PRIMARY KEY DEFAULT CONCAT('POR',nextval('porte_monnai_id_seq')),
+    idUser VARCHAR(10)  REFERENCES utilisateur(id),
+    valeur DECIMAL
 );
