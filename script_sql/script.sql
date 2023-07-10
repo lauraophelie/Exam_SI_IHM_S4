@@ -106,3 +106,32 @@ CREATE TABLE IF NOT EXISTS plat(
     type_plat VARCHAR(8) REFERENCES type_plat(id),
     image_path VARCHAR(50)
 );
+
+CREATE TABLE IF NOT EXISTS proportion_plat(
+    plat VARCHAR(8) REFERENCES plat(id),
+    viande DECIMAL DEFAULT 0,
+    legume DECIMAL DEFAULT 0,
+    feculent DECIMAL DEFAULT 0,
+    fruit DECIMAL DEFAULT 0,
+    huile DECIMAL DEFAULT 0,
+    sucre DECIMAL DEFAULT 0
+);
+
+SELECT
+    p.id as plat,
+    p.designation as nom_plat,
+    t.designation as type_plat,
+    p.image_path as photo_plat
+FROM plat p
+JOIN type_plat t ON p.type_plat = t.id;
+
+CREATE OR REPLACE VIEW v_plat AS(
+    SELECT
+        p.id as plat,
+        p.designation as nom_plat,
+        t.designation as type_plat,
+        p.image_path as photo_plat
+    FROM plat p
+    JOIN type_plat t ON p.type_plat = t.id
+);
+
