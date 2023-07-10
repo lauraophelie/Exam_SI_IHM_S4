@@ -47,11 +47,11 @@
       <span class="tooltip">Ajouter plat</span>
     </li>
     <li>
-      <a href="./AddCode.html">
-        <i class='bx bx-barcode' ></i>
-        <span class="links_name">Ajouter un code</span>
+      <a href="./AddDish.html">
+        <i class='bx bx-dish' ></i>
+        <span class="links_name">Ajouter plat</span>
       </a>
-      <span class="tooltip">Ajouter un code</span>
+      <span class="tooltip">Ajouter plat</span>
     </li>
      <li>
       <a href="#">
@@ -77,62 +77,36 @@
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
-      Trim Life Admin: Page D'acceuil
+      Trim Life Admin: Ajouter un code pour les utilisateurs
     </h1>
   </div>
 </nav>
     <div class="container">
       <div class="text"></div>
-      <div class="text-center" style="color:#0d6efd;"><p class="h2" >Liste demande Code</p></div>
-      <div class="my-4"></div>
+      <div class="text-center" style="color:#0d6efd;"><p class="h2" >Ajouter un code pour les utilisateurs</p></div>
       <div class="text-center">
-      <a href="./AddCode.html"><input type="button" value="Ajouter un code"name="addcode" id="addcode" class="btn btn-outline-success"></a>
-    </div>
-    <div class="my-4"></div>
-      <div class="text-center">
-            <table class="table table-borderless">
-          <thead style="background-color:#0d6efd; color: white;">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Utilisateur</th>
-            <th scope="col">Code</th>
-            <th scope="col">Confirmer/refuser</th>
-          </tr>
-          </thead>
-          <tbody class="table-dark">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
-            <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
-            <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
-            <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        </div>
-        <div class="text">
-          vous verrez ici chers Administrateur les demandes de confirmation des codes que demandes 
-          les utilisateur pour recharger leur porte feuille a vous de confirmer ou refuser les demandes envoyer 
+        <form class="needs-validation" novalidate>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="taille" class="form-label">code (suite de chiffre)</label>
+            <input type="text" class="form-control" id="taille" name="taille" placeholder="inserez votre Taille" required>
+            <div class="invalid-feedback">
+              veuiller entrer une suite de chiffre.
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <label for="pound" class="form-label">Valeur (en Arriary)</label>
+            <input type="text" class="form-control" id="pound" name="pound" placeholder="inserez votre poids" required>
+            <div class="invalid-feedback">
+              Veuillez inserez une valeur valide.
+            </div>
+          </div>
+          </div>
+          <div class="my-4"></div>
+          <center>
+            <input type="submit" value="Ajouter le nouveau code" class="btn btn-outline-success btn-lg">
+          </center>
         </div>
       </div>
   </section>
@@ -149,6 +123,7 @@
 </footer>
 
   <script src="../../assets/js/Home.js"></script>
+  <script src="../../assets/js/form-validation.js"></script>
 
 </body>
 </html>
