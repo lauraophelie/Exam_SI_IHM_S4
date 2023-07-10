@@ -322,3 +322,59 @@ INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
                         ('REG5', 10, 300000),
                         ('REG5', 15, 450000),
                         ('REG5', 20, 650000);
+
+----------------------------------------- vue -----------------------------------------
+
+SELECT
+    reg.id as regime,
+    reg.designation as nom_regime,
+    p.*
+FROM regime_plat r
+JOIN regime reg ON r.regime = reg.id
+JOIN v_plat p ON r.plat = p.plat;
+
+CREATE OR REPLACE VIEW v_regime_plat AS(
+    SELECT
+        reg.id as regime,
+        reg.designation as nom_regime,
+        p.*
+    FROM regime_plat r
+    JOIN regime reg ON r.regime = reg.id
+    JOIN v_plat p ON r.plat = p.plat
+);
+
+SELECT
+    reg.id as regime,
+    reg.designation as nom_regime,
+    s.*
+FROM regime_sport r
+JOIN regime reg ON r.regime = reg.id
+JOIN sport s ON r.sport = s.id;
+
+CREATE OR REPLACE VIEW v_regime_sport AS(
+    SELECT
+        reg.id as regime,
+        reg.designation as nom_regime,
+        s.*
+    FROM regime_sport r
+    JOIN regime reg ON r.regime = reg.id
+    JOIN sport s ON r.sport = s.id
+);
+
+SELECT
+    t.regime,
+    reg.designation as nom_regime,
+    t.duree,
+    t.tarif
+FROM tarifs_regime t 
+JOIN regime reg ON t.regime = reg.id;
+
+CREATE OR REPLACE VIEW v_tarifs_regime AS(
+    SELECT
+        t.regime,
+        reg.designation as nom_regime,
+        t.duree,
+        t.tarif
+    FROM tarifs_regime t 
+    JOIN regime reg ON t.regime = reg.id
+);
