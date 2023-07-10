@@ -1,18 +1,69 @@
 <?php
     class Admin extends CI_Model{
 
-        function validCode($idCode){
-            
+        //---------------porte monnai----------------//
+        function addToPorteMonnai($idCode,$idUser){
+            $valueCode = $this->db->select('valeur')->where('idCode', $idCode['idCode'])->get('code')->row()->valeur;
+
+            // Récupérer la valeur précédente de la colonne 'colonne1' pour l'enregistrement spécifique
+            $ancienneValeur = $this->db->select('valeur')->where('idUser', $idUser)->get('porte_monnai')->row()->valeur;
+
+            // Calculer la nouvelle valeur en ajoutant l'ancienne valeur et la nouvelle valeur
+            $nouvelleValeur = $ancienneValeur + $valueCode;
+
+            // Mettre à jour la colonne 'colonne1' avec la nouvelle valeur
+            $this->db->where('idUser', $idUser);
+            $this->db->update('porte_monnai', array('valeur' => $nouvelleValeur));
+
         }
 
-        function invaldCode($idCode){
+        //---------------code---------------------//
+        function validCode($idCode,$idUser){                // valider le code par admin
+            $this->addToPorteMonnai($idCode,$idUser);
+            $this->invaldCode($idCode);
+        }
+
+        function invalidCode($idCode){                      // invalider les code apres validations
             $this->db->where('idCode', $idCode);
-            $this->db->update('etat', 0);           // etat = 1 valide ; etat = 0 invalid
+            $this->db->update('etat', 0);                   // etat = 1 valide ; etat = 0 invalid
         }
 
         function createPlat($tabPlat){
             $this->db->insert('plat',$tabPlat);   // $tabPlat['designation/type_plat/image_path']
         }
+
+        //--------------------sport------------------------//
+        function createSport($designationSport){
+            $this->db->insert('sport',array('designation' => $designationSport));
+        }
+
+        function updateSport($tabSport){
+            $this->db->where('regime', $tabSport['idReg']);
+            $this->db->update('sport', $tabSport);
+        }
+
+        function deleteSport($tabSport){
+            $this->db->where('regime', $tabSport['idReg']);
+            $this->db->delete('sport');
+        }
+
+        //---------------tarif regime---------------------//
+        function createTarif($tabTarif){
+            $this->db->insert('sport',$tabTarif);
+
+        }
+
+        function updateTarif($tabTarif){
+            $this->db->where('regime', $tabTarif['idReg']);
+            $this->db->update('tarifs_regime', $tabTarif);
+        }
+
+        function deleteTarif(){
+            $this->db->where('regime', $tabSport['idReg']);
+            $this->db->delete('tarifs_regime');
+        }
+
+        //----------------regime---------------//
 
         function createRegime($tabDataRegime){                      // $tabDataRegime['regime/plat/sport'][0,1,2,...(value)]
             //-----create a new regime--------//
@@ -33,35 +84,6 @@
                     'sport' => $tabDataRegime['sport'][$i]
                 ));
             }
-        }
-
-        function createSport($designationSport){
-            $this->db->insert('sport',array('designation' => $designationSport));
-        }
-
-        function updateSport($tabSport){
-            $this->db->where('regime', $tabSport['idReg']);
-            $this->db->update('sport', $tabSport);
-        }
-
-        function deleteSport($tabSport){
-            $this->db->where('regime', $tabSport['idReg']);
-            $this->db->delete('sport');
-        }
-
-        function createTarif($tabTarif){
-            $this->db->insert('sport',$tabTarif);
-
-        }
-
-        function updateTarif($tabTarif){
-            $this->db->where('regime', $tabTarif['idReg']);
-            $this->db->update('tarifs_regime', $tabTarif);
-        }
-
-        function deleteTarif(){
-            $this->db->where('regime', $tabSport['idReg']);
-            $this->db->delete('tarifs_regime');
         }
 
         function updateRegime($tabRegime){
