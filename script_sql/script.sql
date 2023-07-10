@@ -378,3 +378,23 @@ CREATE OR REPLACE VIEW v_tarifs_regime AS(
     FROM tarifs_regime t 
     JOIN regime reg ON t.regime = reg.id
 );
+
+SELECT
+    reg.id as regime_id,
+    reg.designation as nom_regime,
+    obj.id as objectif_id,
+    obj.designation as objectif
+FROM objectif_regime o
+JOIN regime reg ON o.regime = reg.id
+JOIN objectif obj ON o.objectif = obj.id;
+
+CREATE OR REPLACE VIEW v_objectif_regime AS(
+    SELECT
+        reg.id as regime_id,
+        reg.designation as nom_regime,
+        obj.id as objectif_id,
+        obj.designation as objectif
+    FROM objectif_regime o
+    JOIN regime reg ON o.regime = reg.id
+    JOIN objectif obj ON o.objectif = obj.id
+);

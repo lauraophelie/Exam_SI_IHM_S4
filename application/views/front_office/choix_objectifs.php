@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1> Choisir un objectif </h1>
-    <form action="" method="post">
+    <form action="<?php echo site_url('regime/get_regime/')?>" method="post">
         <p>
             <select name="objectif" id="">
                 <?php foreach($choix_objectifs as $choix) { ?>
