@@ -1,5 +1,8 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$base_url = base_url();
+?>
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -7,58 +10,14 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/style/Home.css">
-    <link rel="stylesheet" href="../assets/style/profi.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/style/Home.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/style/profi.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus icon'></i>
-        <div class="logo_name">Trim life</div>
-        <i class='bx bx-menu' id="btn" ></i>
-    </div>
-    <!-- <ul class="navs-list"> -->
-      <li>
-        <a href="./Home.html">
-          <i class='bx bx-home' ></i>
-          <span class="links_name">Home</span>
-        </a>
-         <span class="tooltip">Home</span>
-      </li>
-      <li>
-       <a href="./ProfilUser.html">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Mon profil</span>
-       </a>
-       <span class="tooltip">Mon Profil</span>
-     </li>
-     <li>
-       <a href="./AddCompletion.html">
-         <i class='bx bx-list-plus' ></i>
-         <span class="links_name">Ajouter completion</span>
-       </a>
-       <span class="tooltip">Ajouter Completion</span>
-     </li>
-     <li>
-        <a href="./wallet.html">
-          <i class='bx bx-wallet' ></i>
-          <span class="links_name">Porte Feuille</span>
-        </a>
-        <span class="tooltip">Porte Feuille</span>
-      </li>
-     <li>
-      <li class="profile" style="background-color: black;">
-         <div class="profile-details">
-           <div class="name_job">
-             <div class="name">Log out</div>
-             <div class="job">Examen Rojo</div>
-           </div>
-         </div>
-         <i class='bx bx-log-out' id="log_out" style="background-color: black;"></i>
-     </li>
-    </ul>
-  </div>
+  <?php 
+    $this->load->view('barFront');
+  ?>
   <!-- ato anatiny section no mapiditra anze zvt rht apidirina -->
   <section class="home-section">
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
@@ -105,16 +64,8 @@
             <div class="invalid-feedback">
               Choisissez un sexe .
             </div>
-          </div>
-          <div class="col-sm-6">
-            <label for="jour" class="form-label">Nombre de jour du regime</label>
-            <input type="number" min="1" step="1" max="365" class="form-control" id="jour" name="jour" placeholder="inserez votre poids" required>
-            <div class="invalid-feedback">
-              veuiller inserez un nombre de jour valid.
-            </div>
-          </div>
-  
-          <div class="col-sm-6">
+          </div>  
+          <div class="col-12">
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
               <option value="">Choisir un regime ...</option>
@@ -134,8 +85,8 @@
       </form>
     </div>
   </center>
-  <script src="../assets/js/form-validation.js"></script>
-  <script src="../assets/js/Home.js"></script>
+  <script src="<?php echo base_url();?>/assets/js/form-validation.js"></script>
+  <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 </section>
   
 <footer class="footer mt-auto py-3 bg-dark">
@@ -149,7 +100,7 @@
   </div>
 </footer>
 
-  <script src="../assets/js/Home.js"></script>
+  <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,11 @@
 <?php
     class Sign extends CI_Model{
 
+        function getId($prefixe){
+            $id = $this->db->insert_id();
+            return $prefixe.$id;
+        }
+
         function verifLog($tab1){
             $tab_base = $this->getValeur();
             // var_dump($tab1);
@@ -18,7 +23,7 @@
             return $query->result();
         }
         
-        public function getValeur($table){
+        public function getValues($table){
             $query = $this->db->get($table);
             return $query->result();
 
@@ -27,23 +32,22 @@
         function IsValuesNull($tab){
             foreach($tab as $value){
                 if(empty($value)){
-                    return 1;
+                    return 1;           // if a value is null
                 }
             }
-            return 0;
+            return 0;                   // if not
         }
 
         function insertSign_in($data){
             $this->db->insert('utilisateur', $data);
             // echo $this->db->affected_rows();
             
-            $id = $this->db->insert_id();
+            $id = $this->getId("UTI");
             $this->db->insert('porte_monnai',array( // creer un porte monnai pour le
-                'idUser' => $id,                    // nouveau user
+                'iduser' => $id,                    // nouveau user
                 'valeur' => 0
             ));
-            return $this->db->insert_id();          // récupérer l'identifiant (ID) généré lors de l'insertion
-                                                    // d'une nouvelle ligne dans une table de base de données à l'aide de CodeIgniter.
+            return $id;
 
         }
     }

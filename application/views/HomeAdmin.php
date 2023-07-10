@@ -3,73 +3,75 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 ?>
 <!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Page d'accueil </title>
+    <title> Page d'acceuil | Admin </title>
     <link rel="stylesheet" href="style.css">
-    <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="<?php echo base_url();?>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>/assets/style/css/Home.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>/assets/dist/css/home.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/style/Home.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <?php 
-    $this->load->view('barFront');
-  ?>
+  <?php $this->load->view('barBack') ;?>
   <!-- ato anatiny section no mapiditra anze zvt rht apidirina -->
   <section class="home-section">
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
-      Trim Life: Page D'acceuil
+      Trim Life Admin: Page D'acceuil
     </h1>
   </div>
 </nav>
     <div class="container">
       <div class="text"></div>
-      <div class="text-center"><p class="h2" >ceci est un titre</p></div>
+      <div class="text-center" style="color:#0d6efd;"><p class="h2" >Liste demande Code</p></div>
       <div class="text-center">
             <table class="table table-borderless">
           <thead style="background-color:#0d6efd; color: white;">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Utilisateur</th>
+            <th scope="col">Code</th>
+            <th scope="col">Confirmer/refuser</th>
           </tr>
           </thead>
           <tbody class="table-dark">
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>xxx xxxx xxxxxx</td>
+            <td>
+                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
+                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
+            </td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>xxx xxxx xxxxxx</td>
+            <td>
+                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
+                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
+            </td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>xxx xxxx xxxxxx</td>
+            <td>
+                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
+                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
+            </td>
           </tr>
           </tbody>
         </table>
         </div>
         <div class="text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          vous verrez ici chers Administrateur les demandes de confirmation des codes que demandes 
+          les utilisateur pour recharger leur porte feuille a vous de confirmer ou refuser les demandes envoyer 
         </div>
       </div>
   </section>
@@ -85,6 +87,7 @@ $base_url = base_url();
   </div>
 </footer>
 
-  <script src="<?php echo $base_url;?>/assets/js/Home.js"></script>
+  <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
+
 </body>
 </html>

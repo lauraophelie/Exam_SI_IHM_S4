@@ -68,7 +68,7 @@
         function createRegime($tabDataRegime){                      // $tabDataRegime['regime/plat/sport'][0,1,2,...(value)]
             //-----create a new regime--------//
             $this->db->insert('regime',$tabDataRegime['regime']);   // $tabDataRegime['regime'][designation]
-            $id = $this->db->insert_id();
+            $id = $this->getId('REG');                              // idRegime avec prefixe 'REG'
             for ($i=0; $i < count($tabDataRegime['plat']); $i++) {
                 //----------create a new plat identified by the prevew regime---------//
                 $this->db->insert('regime_plat',array(
@@ -129,7 +129,7 @@
             // var_dump($tab1);
             // var_dump($tab_base);
             for ($i=0; $i < count($tab_base); $i++) { 
-                if($tab_base[$i]->email==$tab1['nom'] && $tab_base[$i]->email==$tab1['email'] && $tab_base[$i]->mdp==$tab1['mdp']){
+                if($tab_base[$i]->nom==$tab1['nom'] && $tab_base[$i]->email==$tab1['email'] && $tab_base[$i]->mdp==$tab1['mdp']){
                     return 1;
                 }
             }
@@ -141,10 +141,15 @@
             return $query->result();
         }
 
-        public function getValeur($table){
+        public function getValues($table){
             $query = $this->db->get($table);
             return $query->result();
 
         } 
+
+        function getId($prefixe){
+            $id = $this->db->insert_id();
+            return $prefixe.$id;
+        }
     }
 ?>
