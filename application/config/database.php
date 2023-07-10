@@ -76,13 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-<<<<<<< Updated upstream
 	'username' => 'regime',
 	'password' => 'regime',
-=======
-	'username' => 'postgres',
-	'password' => 'root',
->>>>>>> Stashed changes
 	'database' => 'regime',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
