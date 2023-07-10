@@ -18,7 +18,7 @@
             return $query->result();
         }
         
-        public function getValeur($table){
+        public function getValues($table){
             $query = $this->db->get($table);
             return $query->result();
 
