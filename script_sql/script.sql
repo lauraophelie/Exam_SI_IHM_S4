@@ -181,3 +181,144 @@ INSERT INTO sport(designation) VALUES('Marche à pieds'),
                                     ('Pilates'),
                                     ('Musculation');
 
+
+-------------------------------------- objectifs ----------------------------------------------
+
+CREATE SEQUENCE objectif_id_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS objectif(
+    id VARCHAR(8) PRIMARY KEY DEFAULT CONCAT('OBJ', nextval('objectif_id_seq')),
+    designation VARCHAR(75)
+);
+
+INSERT INTO objectif(designation) VALUES('Augmenter son poids'),
+                                        ('Réduire son poids');
+
+-------------------------------------- régime -------------------------------------------------
+
+CREATE SEQUENCE regime_id_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS regime(
+    id VARCHAR(8) PRIMARY KEY DEFAULT CONCAT('REG', nextval('regime_id_seq')),
+    designation VARCHAR(75),
+    duree INTEGER DEFAULT 1,
+    tarif DECIMAL NOT NULL
+);
+
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime été', 15, 250000),
+                                                    ('Regime intensif', 30, 500000),
+                                                    ('Regime light', 15, 350000);
+
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime hiver', 15, 150000),
+                                                    ('Regime intensif été', 15, 600000);
+
+
+CREATE TABLE IF NOT EXISTS regime_plat(
+    regime VARCHAR(8) REFERENCES regime(id),
+    plat VARCHAR(8) REFERENCES plat(id)
+);
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG1', 'PLA1'),
+                                            ('REG1', 'PLA2'),
+                                            ('REG1', 'PLA8'),
+                                            ('REG1', 'PLA13');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG1', 'PLA11'),
+                                            ('REG1', 'PLA9'),
+                                            ('REG1', 'PLA7'),
+                                            ('REG1', 'PLA10');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG2', 'PLA3'),
+                                            ('REG2', 'PLA4'),
+                                            ('REG2', 'PLA5'),
+                                            ('REG2', 'PLA6');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG2', 'PLA13'),
+                                            ('REG2', 'PLA2'),
+                                            ('REG2', 'PLA9'),
+                                            ('REG2', 'PLA8');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG3', 'PLA1'),
+                                            ('REG3', 'PLA6'),
+                                            ('REG3', 'PLA8'),
+                                            ('REG3', 'PLA5');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG4', 'PLA10'),
+                                            ('REG4', 'PLA8'),
+                                            ('REG4', 'PLA1'),
+                                            ('REG4', 'PLA5');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG5', 'PLA11'),
+                                            ('REG5', 'PLA6'),
+                                            ('REG5', 'PLA8'),
+                                            ('REG5', 'PLA5');
+
+INSERT INTO regime_plat(regime, plat) VALUES('REG5', 'PLA10'),
+                                            ('REG5', 'PLA7'),
+                                            ('REG5', 'PLA12'),
+                                            ('REG5', 'PLA5');
+
+CREATE TABLE IF NOT EXISTS regime_sport(
+    regime VARCHAR(8) REFERENCES regime(id),
+    sport VARCHAR(8) REFERENCES sport(id)
+);
+
+INSERT INTO regime_sport(regime, sport) VALUES('REG1', 'SPO1'),
+                                                ('REG1', 'SPO2'),
+                                                ('REG2', 'SPO3'),
+                                                ('REG3', 'SPO4'),
+                                                ('REG3', 'SPO5'),
+                                                ('REG4', 'SPO2'),
+                                                ('REG5', 'SPO1'),
+                                                ('REG5', 'SPO2');
+
+CREATE TABLE IF NOT EXISTS objectif_regime(
+    regime VARCHAR(8) REFERENCES regime(id),
+    objectif VARCHAR(8) REFERENCES objectif(id)
+);
+
+INSERT INTO objectif_regime(regime, objectif) VALUES('REG1', 'OBJ1'),
+                                                    ('REG2', 'OBJ2'),
+                                                    ('REG3', 'OBJ1'),
+                                                    ('REG4', 'OBJ2'),
+                                                    ('REG5', 'OBJ1');
+
+--------------------------------
+
+ALTER TABLE regime DROP COLUMN duree;
+ALTER TABLE regime DROP COLUMN tarif;
+
+--------------------------------
+
+CREATE TABLE IF NOT EXISTS tarifs_regime(
+    regime VARCHAR(8) REFERENCES regime(id),
+    duree INTEGER,
+    tarif DECIMAL
+);
+
+INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
+                        ('REG1', 1, 150000),
+                        ('REG1', 5, 300000),
+                        ('REG1', 15, 450000),
+                        ('REG1', 30, 650000);
+
+INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
+                        ('REG2', 5, 250000),
+                        ('REG2', 10, 400000),
+                        ('REG2', 15, 450000),
+                        ('REG2', 30, 650000);
+
+INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
+                        ('REG3', 5, 250000),
+                        ('REG3', 15, 450000),
+                        ('REG3', 30, 650000);
+
+INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
+                        ('REG4', 5, 350000),
+                        ('REG4', 15, 550000),
+                        ('REG4', 30, 650000);
+
+INSERT INTO tarifs_regime(regime, duree, tarif) VALUES
+                        ('REG5', 10, 300000),
+                        ('REG5', 15, 450000),
+                        ('REG5', 20, 650000);
