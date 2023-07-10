@@ -206,12 +206,12 @@ CREATE TABLE IF NOT EXISTS regime(
     tarif DECIMAL NOT NULL
 );
 
-INSERT INTO regime(designation, duree, tarif) VALUES('Regime été'),
-                                                    ('Regime intensif'),
-                                                    ('Regime light');
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime été', 15, 250000),
+                                                    ('Regime intensif', 30, 500000),
+                                                    ('Regime light', 15, 350000);
 
-INSERT INTO regime(designation, duree, tarif) VALUES('Regime hiver'),
-                                                    ('Regime intensif été');
+INSERT INTO regime(designation, duree, tarif) VALUES('Regime hiver', 15, 150000),
+                                                    ('Regime intensif été', 15, 600000);
 
 
 CREATE TABLE IF NOT EXISTS regime_plat(
@@ -397,22 +397,22 @@ INSERT INTO code(idCode, valeur, etat) VALUES
                         ('COD192234', 1000, 1),
                         ('COD116234', 1000, 1),
                         ('COD112234', 2000, 1),
-                        ('COD112254', 2000, 1);
-                        ('COD412254', 2000, 1);
-                        ('COD212254', 2000, 1);
-                        ('COD111254', 5000, 1);
-                        ('COD112354', 5000, 1);
-                        ('COD112251', 5000, 1);
-                        ('COD112289', 5000, 1);
-                        ('COD156251', 10000, 1);
-                        ('COD342251', 10000, 1);
-                        ('COD212251', 10000, 1);
-                        ('COD112251', 15000, 1);
-                        ('COD322251', 15000, 1);
-                        ('COD342211', 15000, 1);
-                        ('COD342221', 15000, 1);
-                        ('COD102250', 20000, 1);
-                        ('COD102259', 50000, 1);
+                        ('COD112254', 2000, 1),
+                        ('COD412254', 2000, 1),
+                        ('COD212254', 2000, 1),
+                        ('COD111254', 5000, 1),
+                        ('COD112354', 5000, 1),
+                        ('COD112251', 5000, 1),
+                        ('COD112289', 5000, 1),
+                        ('COD156251', 10000, 1),
+                        ('COD342251', 10000, 1),
+                        ('COD212251', 10000, 1),
+                        ('COD112251', 15000, 1),
+                        ('COD322251', 15000, 1),
+                        ('COD342211', 15000, 1),
+                        ('COD342221', 15000, 1),
+                        ('COD102250', 20000, 1),
+                        ('COD102259', 50000, 1)
 
 -----------------------------porte monnaie------------------------
 
