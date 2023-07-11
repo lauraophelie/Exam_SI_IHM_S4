@@ -90,34 +90,99 @@
 </nav>
 <div class="text-center" style="color:#0d6efd;"><p class="h2" >Tableau de bord</p></div>
 <div class="my-4">
-<div class="container-fluid h-100">
-    <div class="row h-100">
-      <div class="col-md-12">
+<div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Regime 1</th>
+            <th>Regime 2</th>
+            <th>Regime 3</th>
+            <th>Regime 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="col">Ventes</td>
+            <td>120</td>
+            <td>150</td>
+            <td>180</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>Revenus</td>
+            <td>1000</td>
+            <td>1200</td>
+            <td>1500</td>
+            <td>2000</td>
+          </tr>
+        </tbody>
+      </table>
+    <div class="container">
+        <div class="row h-100">
         <canvas id="myChart"></canvas>
-      </div>
+        </div>
     </div>
-  </div>
+    <hr class="my-4">
+    <div class="text-center"><p class="h4" style="color:#0d6efd;">Les plats de notre programes</p></div>
+    <div class="text-center"><p class="h6">le nommbre de plat total est : 300</p></div>
+    <div class="my-4"></div>
+    <div class="row">
+    <div class="col-md-6 col-lg-4 col-container"> <h5 class="text-center">plat a base de viande</h3> <canvas id="chart1" ></canvas></div>
+    <div class="col-md-6 col-lg-4 col-container"><h5 class="text-center">plat a base de volaille</h3><canvas id="chart2" ></canvas></div>
+    <div class="col-md-6 col-lg-4 col-container"><h5 class="text-center">plat a base de Poisson</h3><canvas id="chart3"></canvas></div>
+</div>    
+    <script src="../../assets/js/chart.js"></script>
+    <script>
+        // Données pour les graphiques
+        var data = {
+            datasets: [{
+                data: [300, 100],
+                backgroundColor: ['#36A2EB', '#FF6384']
+            }]
+        };
+        var data2 = {
+            datasets: [{
+                data: [300, 150],
+                backgroundColor: ['#36A2EB', '#ffc107']
+            }]
+        };
+        var data3 = {
+            datasets: [{
+                data: [300, 200],
+                backgroundColor: ['#36A2EB', '#198754']
+            }]
+        };
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
-  <script>
-    // Données pour le graphique
-    var data = {
-      labels: ['Regime 1', 'Regime 2', 'Regime 3', 'Regime 4', 'Regime 5'],
-      datasets: [{
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(255, 159, 64, 0.5)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)'],
-        borderWidth: 1
-      }]
-    };
+        // Options des graphiques
+        var options = {
+            responsive: true
+        };
 
-    // Création du graphique en camembert
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'pie',
-      data: data
-    });
-  </script>
+        // Création des graphiques
+        var ctx1 = document.getElementById('chart1').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: data2,
+            options: options
+        });
+
+        var ctx3 = document.getElementById('chart3').getContext('2d');
+        var chart3 = new Chart(ctx3, {
+            type: 'doughnut',
+            data: data3,
+            options: options
+        });
+    </script>
+      <script src="../../assets/js/tableauBord.js"></script>
+      </div>
   </section>
   
 <footer class="footer mt-auto py-3 bg-dark">
