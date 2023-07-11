@@ -2,6 +2,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
+// var_dump($allCode);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,28 +42,16 @@ $base_url = base_url();
             <th scope="col">#</th>
             <th scope="col">code</th>
             <th scope="col">valeur</th>
-            <th scope="col">Etat</th>
           </tr>
           </thead>
           <tbody class="table-dark">
+            <?php for ($i=0; $i < count($allCode); $i++) { ?>
           <tr>
-            <th scope="row">1</th>
-            <td>12112425454</td>
-            <td>200.000 ar</td>
-            <td>utiliser</td>
+            <th scope="row"><?php echo $i+1; ?></th>
+            <td><?php echo $allCode[$i]->idcode;?></td>
+            <td><?php echo $allCode[$i]->valeur;?></td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>12112425454</td>
-            <td>500.000 ar</td>
-            <td>en attente</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>12112425454</td>
-            <td>600.000 ar</td>
-            <td>non utiliser</td>
-          </tr>
+          <?php } ?>
           </tbody>
         </table>
         </div>

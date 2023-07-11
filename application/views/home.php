@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+// var_dump($this->session->userdata());
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

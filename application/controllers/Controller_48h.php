@@ -19,6 +19,81 @@ class Controller_48h extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
+    //--------------------CRUD------------------------//
+    public function cancelCode($idParam){
+        // echo $idParam;
+        $this->load->model('Admin');
+        $this->Admin->cancelCode($idParam);
+
+        $this->toHomeAdmin();
+    }
+
+    public function validateCode(){
+        $idCode = $this->input->get('idcode');
+        $iduser = $this->input->get('id');
+
+        $this->load->model('Admin');
+        $this->Admin->validCode($idCode,$iduser);
+        $this->toHomeAdmin();
+
+    }
+
+    //------------------- WALLET -----------------------//
+    
+    public function verifCode(){
+        $code = $this->input->post('code');
+        $id = $this->input->post('id');
+        $this->load->model('Sign');
+        $etat = $this->Sign->siCodeExist($code);
+        // echo $etat;
+        $this->Sign->waitStatusCode($code,$id);
+
+        $this->toHome();
+    }
+
+    
+
+    //-------------------- LIST CODE  ------------------//
+
+    public function getCode(){
+        $this->load->model('Sign');
+        $code = $this->Sign->getValues('code');
+        return $code;
+    }
+
+
+
+    //--------------------- COMPLETION --------------------//
+
+    public function getRegime(){
+        $this->load->model('Sign');
+        $regimes = $this->Sign->getValues('regime');
+        return $regimes;
+    }
+
+    public function insertDetailUser(){
+        $tabLog = array(
+            'utilisateur' => $this->input->post('id'),
+            'taille' => $this->input->post('taille'),
+            'poids' => $this->input->post('pound'),
+            'genre' => $this->input->post('sexe'),
+            'date_naissance' => $this->input->post('dtn')
+        );
+        $this->load->model('Sign');
+        $val = $this->Sign->IsValuesNull($tabLog);
+        if($val==0){                                // procede si les valeurs ne sont pas nulles
+            $id = $this->Sign->myInsert('details_utilisateur',$tabLog);        /// insertion dans la table correspondant au sign up
+
+            $this->load->helper('url');                       /// et recupere l'id de l'user
+		    $this->load->view('home');
+        }
+        else{                                           /// sinon redirige vers la page de login
+            $this->load->helper('url');
+		    $this->load->view('home');
+        }
+    }
+
     //----------------- REDIRECTION FRONT -----------------//
 
     public function toHome(){
@@ -31,25 +106,32 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toAddCompletion(){
+        $dataRegime['allRegime'] = $this->getRegime();
         $this->load->helper('url');
-		$this->load->view('AddCompletion');
+		$this->load->view('AddCompletion',$dataRegime);
     }
 
     public function toListCode(){
+        $dataCode['allCode'] = $this->getCode();
         $this->load->helper('url');
-		$this->load->view('listCode');
+		$this->load->view('listCode',$dataCode);
     }
 
     public function toWallet(){
+        $this->load->model('Sign');
+        $dataWallet['wallet'] = $this->Sign->getValues('v_wallet');
         $this->load->helper('url');
-		$this->load->view('wallet');
+		$this->load->view('wallet',$dataWallet);
     }
 
     //----------------- REDIRECTION BACK -----------------//
 
     public function toHomeAdmin(){
+        $this->load->model('Admin');
+        $waitingCode['waitingCode'] = $this->Admin->getWaitingCode();
+        // var_dump($waitingCode);
         $this->load->helper('url');
-		$this->load->view('HomeAdmin');
+        $this->load->view('HomeAdmin',$waitingCode);
     }
 
     public function toListeRegime(){
@@ -67,6 +149,7 @@ class Controller_48h extends CI_Controller {
 		$this->load->view('AddDish');
     }
     
+    //------------- LOG --------------//
     public function log_admin(){
         $tabLog = array(
             'nom' => $this->input->post('admin_nom'),
@@ -82,8 +165,7 @@ class Controller_48h extends CI_Controller {
             $authentif = $this->Admin->verifLog($tabLog);    /// insertion dans la table correspondant au sign up
             // echo $authentif;
             if($authentif==1){                                  // si l'authenticite est verifie vrai
-                $this->load->helper('url');
-		        $this->load->view('HomeAdmin');
+                $this->toHomeAdmin();
             }
             else{                                               // sinon
                 $this->redirect_admin();
@@ -121,6 +203,10 @@ class Controller_48h extends CI_Controller {
             $authentif = $this->Sign->verifLog($tabLog);    /// insertion dans la table correspondant au sign up
 
             if($authentif==1){                                  // si l'authenticite est verifie vrai
+                $userdata = $this->Sign->getUserLog($tabLog);
+                $this->create_session('id',$userdata[0]->id);
+                // var_dump($userdata[0]);
+                // var_dump($this->session->userdata());
                 $this->load->helper('url');
 		        $this->load->view('home');
             }
@@ -147,7 +233,9 @@ class Controller_48h extends CI_Controller {
             $id = $this->Sign->insertSign_in($tabLog);        /// insertion dans la table correspondant au sign up
 
             $userdata = array_merge(array('id' => $id),$tabLog);
-            $this->create_session($userdata);
+            $this->create_session2($userdata);
+
+            // var_dump($this->session->userdata('id'));
 
             $this->load->helper('url');                       /// et recupere l'id de l'user
 		    $this->load->view('home');
@@ -157,8 +245,18 @@ class Controller_48h extends CI_Controller {
 		    $this->load->view('login');
         }
     }
+    //-------------- SESSION -----------------//
+    public function create_session($key, $userdata) {
+        // Charger la bibliothèque de sessions
+        $this->load->library('session');
+        if (!is_dir(APPPATH . 'sessions')) {
+            mkdir(APPPATH . 'sessions', 0700);
+        }
+        
+        $this->session->set_userdata($key,$userdata);
+    }
 
-    public function create_session($userdata) {
+    public function create_session2($userdata) {
         // Charger la bibliothèque de sessions
         $this->load->library('session');
         if (!is_dir(APPPATH . 'sessions')) {
@@ -168,6 +266,7 @@ class Controller_48h extends CI_Controller {
         $this->session->set_userdata($userdata);
     }
 
+    //-------------- LOGOUT ------------------//
     public function logout() {
         // Charger la bibliothèque de sessions
         $this->load->library('session');
