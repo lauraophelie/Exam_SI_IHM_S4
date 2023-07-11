@@ -9,5 +9,11 @@
             $data['suggestions'] = $suggestions;
             $this->load->view('front_office/suggestions_regime', $data);
         }
+        public function details_regime($regime) {
+            $this->load->model('front_office/regime_model');
+            $details = $this->regime_model->details_regime($regime);
+            $data['details'] = $details;
+            $this->load->view('front_office/details_regime', $data);
+        }
     }
 ?>
