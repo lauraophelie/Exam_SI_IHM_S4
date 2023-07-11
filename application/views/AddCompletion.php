@@ -1,6 +1,10 @@
 <?php
-  defined('BASEPATH') OR exit('No direct script access allowed');
-  $base_url = base_url();
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+$base_url = base_url();
+// var_dump($allRegime);
+// var_dump($allObjectif);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -68,6 +72,7 @@
               Choisissez un sexe .
             </div>
           </div>  
+
           <div class="col-12">
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
@@ -75,6 +80,7 @@
               <?php  foreach($allRegime as $valueReg) { ?>
               <option value="<?php echo $valueReg->id;?>"><?php echo $valueReg->designation;?></option>
               <?php  } ?>
+
 
 
           <div class="col-12">

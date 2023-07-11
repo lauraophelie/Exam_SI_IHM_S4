@@ -1,5 +1,19 @@
 <?php
-    class Admin extends CI_Model {
+
+    class Admin extends CI_Model{
+
+        //-------------------GEN--------------------//
+        public function myDel($table,$cond,$value){
+            $this->db->where($cond, $value);
+            $this->db->delete($table);
+        }
+
+        public function myUpdate($table,$cond,$value,$toUpdate){        // roUpdate is an array('column'=>val)
+            $this->db->where($cond, $value);
+            $this->db->update($table, $toUpdate);
+            // echo $table." ".$cond." ".$value." ";
+        }
+
 
         //---------------porte monnai----------------//
         function addToPorteMonnai($idCode,$idUser){
@@ -47,6 +61,12 @@
             $this->db->insert('plat',$tabPlat);   // $tabPlat['designation/type_plat/image_path']
         }
 
+        function deletePlat($id){
+            $this->myDel('proportion_plat','plat',$id);         // supprimer d'abort proportion_plat
+            $this->myDel('plat','id',$id);                      // alors nous pouvons supprimer plat
+
+        }
+
         //--------------------sport------------------------//
         function createSport($designationSport){
             $this->db->insert('sport',array('designation' => $designationSport));
@@ -81,7 +101,7 @@
         //----------------regime---------------//
 
         function createRegime($tabDataRegime){                      // $tabDataRegime['regime/plat/sport'][0,1,2,...(value)]
-            //-----create a new regime--------//
+            //-----create a new regime--------// 
             $this->db->insert('regime',$tabDataRegime['regime']);   // $tabDataRegime['regime'][designation]
             $id = $this->getId('REG');                              // idRegime avec prefixe 'REG'
             for ($i=0; $i < count($tabDataRegime['plat']); $i++) {
@@ -125,6 +145,12 @@
         }
 
         function deleteRegime($idRegime){
+            //-----------objectif-----------//
+            $this->db->where('regime', $idRegime);
+            $this->db->delete('objectif_regime');
+            //-----------tarif------------//
+            $this->db->where('regime', $idRegime);
+            $this->db->delete('tarifs_regime');
             //-------------plat-------------//
             $this->db->where('regime', $idRegime);
             $this->db->delete('regime_plat');
@@ -134,9 +160,6 @@
             //-----------regime------------//
             $this->db->where('id', $idRegime);
             $this->db->delete('regime');
-            //-----------tarif------------//
-            $this->db->where('regime', $idRegime);
-            $this->db->delete('tarifs_regime');
         }
 
         function verifLog($tab1){

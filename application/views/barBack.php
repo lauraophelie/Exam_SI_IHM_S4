@@ -33,6 +33,21 @@
       </a>
       <span class="tooltip">Ajouter un plat</span>
     </li>
+    <li>
+      <a href="<?php echo base_url('Controller_48h/toAddCode'); ?>">
+        <i class='bx bx-barcode' ></i>
+        <span class="links_name">Ajouter un code</span>
+      </a>
+      <span class="tooltip">Ajouter un code</span>
+    </li>
+    
+    <li>
+      <a href="<?php echo base_url('Controller_48h/toTableauBord'); ?>">
+        <i class="bx bx-stats"></i>
+        <span class="links_name">Tableau de bord</span>
+      </a>
+      <span class="tooltip">Tableau de bord</span>
+    </li>
      <li>
       <a href="#">
         <i class='bx bx-plus-circle' ></i>
@@ -46,6 +61,9 @@
          <div class="profile-details">
            <div class="name_job">
              <div class="name">Log out</div>
+
+             <div class="job"></div>
+
            </div>
          </div>
          <i class='bx bx-log-out' id="log_out" style="background-color: black;"></i>

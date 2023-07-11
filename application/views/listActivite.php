@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+// var_dump($sport);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -31,7 +32,7 @@ $base_url = base_url();
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Liste des Activités</p></div>
       <div class="my-4">
         <div class="text-center">
-        <a href=""><input type="button" value="Ajouter une Activité" name="ajouter" id="ajouter" class="btn btn-success"></a>
+        <a href="<?php echo base_url('Controller_48h/toAddActivity'); ?>"><input type="button" value="Ajouter une Activité" name="ajouter" id="ajouter" class="btn btn-success"></a>
     </div>
     <div class="my-4"></div>
       <div class="text-center">
@@ -40,31 +41,23 @@ $base_url = base_url();
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nom de l'Activité</th>
-            <th scope="col">kcl depensée</th>
+            <th scope="col"> -- </th>
           </tr>
           </thead>
           <tbody class="table-dark">
+            <?php for($i=0; $i< count($sport); $i++) { ?>
           <tr>
-            <th scope="row">1</th>
-            <td>developer coucher</td>
-            <td>12 kcl</td>
+            <th scope="row"><?php echo $i+1;?></th>
+            <td><?php echo $sport[$i]->designation; ?></td>
+            <td>
+              <a href="<?php echo base_url('Controller_48h/suppAct?id='); echo $sport[$i]->id; ?>"><input type="button" value="supprimer" class="btn btn-outline-danger"></a>
+              <a href="<?php echo base_url('Controller_48h/toUpdateActivity?id='); echo $sport[$i]->id; ?>"><input type="button" value="modifier" class="btn btn-outline-warning"></a>
+            
+            </td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>marche a pied</td>
-            <td>38 kcl</td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>velo electrique</td>
-            <td>38 kcl</td>
-          </tr>
+          <?php } ?>
           </tbody>
         </table>
-        </div>
-        <div class="text">
-          vous verrez ici chers Administrateur la liste des Activité que nous proposons a nos utilisateur qui les suivent
-          tout le long de leur parcours en fonction de ce qu'il ont choisi comme objectif et programme. 
         </div>
       </div>
   </section>

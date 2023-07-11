@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,27 +29,7 @@ $base_url = base_url();
     <div class="container">
       <div class="my-4">
         <div class="text-center">
-        <a href="./AddRegime.html">
-          <button type="button" name="ajouter" id="ajouter" class="btn btn-success">
-            Nouveau régime 
-          </button>
-          </a>
-    </div>
-    <div class="my-4"></div>
-        <div class="text-center">
-            <table class="table" style="font-size: 15px" width="65%">
-          <thead style="background-color:#0d6efd; color: white;">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nom du régime</th>
-            <th scope="col"> </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>100% Sans glutene</td>
-        <a href="./AddRegime.html"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
+
         <a href="<?php echo base_url('Controller_48h/toAddRegime');?>"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
     </div>
     <div class="my-4"></div>
@@ -62,40 +43,7 @@ $base_url = base_url();
           </tr>
           </thead>
           <tbody class="table-dark">
-          <tr>
-            <th scope="row">1</th>
-            <td>100% Sans glutene</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>regime speciale carnivore</td>
-            <td>100.000 ar</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>regime vegetarien</td>
-            <td>100.000 ar</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-  </section>
+
             <?php $i =1; foreach($regime as $r) { ?>
           <tr>
             <th scope="row"><?php echo $i; $i++; ?></th>

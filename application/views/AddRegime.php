@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
+// var_dump($plat);
+// var_dump($sport);
+// var_dump($objectif);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -21,16 +26,15 @@ $base_url = base_url();
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
-      Trim Life Admin: Ajouter un Regime
+
+      Trim Life Admin: Modifier un Regime
+
     </h1>
   </div>
 </nav>
     <div class="container">
       <div class="text"></div>
-      <div class="text-center" style="color:#0d6efd;"><p class="h2" >Ajouter un Regime</p></div>
-      <div class="my-4"></div>
-      <center>
-        <form class="needs-validation" novalidate>
+
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Modifier un Regime</p></div>
       <div class="my-4"></div>
       <center>
@@ -43,13 +47,7 @@ $base_url = base_url();
                 veuiller entrer un Nom valide.
               </div>
             </div>
-            <div class="col-sm-6">
-              <label for="regimeType" class="form-label">type de regime</label>
-              <select class="form-select" id="regimeType" name="regimeType" required>
-                <option value="">Choisir un type regime ...</option>
-                <option value="1">Regime minceur(Diminuer mon poids)</option>
-                <option value="2">Regime grosseur(Augmenter mon poids)</option>
-                <option value="3">Garde ma ligne Actuelle(ni mincir ni grossir)</option>
+
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">Objectif Du Regime</label>
               <select class="form-select" id="regimeType" name="regimeType" required>
@@ -68,27 +66,7 @@ $base_url = base_url();
             <div class="text-center" ><p class="h5" >choisir le(s) plat(s) qui compose le regime</p></div>
             <div class="col-12">
                 <div class="row">
-                  <div class="col-md-6 col-lg-4 col-container">
-                    <img src="<?php echo base_url();?>/assets/img/profil.jpg" width="50%" class="img-fluid" alt="" srcset="">
-                    <p>
-                      <input type="checkbox" class="form-check-input" name="plat" id="plat">
-                      <label class="form-check-label" for="plat"> plat 1</label>
-                    </p>
-                  </div>
-                  <div class="col-md-6 col-lg-4 col-container">
-                    <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
-                    <p>
-                      <input type="checkbox" class="form-check-input" name="plat" id="plat">
-                      <label class="form-check-label" for="plat"> plat 2</label>
-                    </p>
-                  </div>
-                  <div class="col-md-6 col-lg-4 col-container">
-                    <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
-                    <p>
-                      <input type="checkbox" class="form-check-input" name="plat" id="plat">
-                      <label class="form-check-label" for="plat"> plat 3</label>
-                    </p>
-                  </div>
+
                   <?php foreach($plat as $p) { ?>
                   <div class="col-md-6 col-lg-4 col-container">
                     <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
@@ -102,23 +80,7 @@ $base_url = base_url();
                 </div>
             </div>
             </div>
-          <hr class="my-4">
-          <div class="col-12">
-            <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
-            <input type="checkbox" class="form-check-input" name="plat" id="plat">
-            <label class="form-check-label" for="plat"> course a pied</label>
-            <input type="checkbox" class="form-check-input" name="plat" id="plat">
-            <label class="form-check-label" for="plat"> Natation</label>
-            <input type="checkbox" class="form-check-input" name="plat" id="plat">
-            <label class="form-check-label" for="plat"> velo</label>
-          </div>
-          <hr class="my-4">
-          <center>
-          <button class=" btn btn-outline-success btn-lg" type="submit">Ajouter le regime </button>
-          </center>
-        </form>
-      </div>
-    </center>
+
             <hr class="my-4">
             <div class="col-12">
               <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
