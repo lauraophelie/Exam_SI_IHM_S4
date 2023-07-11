@@ -1,12 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
-<<<<<<< Updated upstream
-=======
-// var_dump($plat);
-// var_dump($sport);
-// var_dump($objectif);
->>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -27,27 +21,20 @@ $base_url = base_url();
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
-<<<<<<< Updated upstream
       Trim Life Admin: Ajouter un Regime
-=======
-      Trim Life Admin: Modifier un Regime
->>>>>>> Stashed changes
     </h1>
   </div>
 </nav>
     <div class="container">
       <div class="text"></div>
-<<<<<<< Updated upstream
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Ajouter un Regime</p></div>
       <div class="my-4"></div>
       <center>
         <form class="needs-validation" novalidate>
-=======
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Modifier un Regime</p></div>
       <div class="my-4"></div>
       <center>
         <form class="needs-validation" action="<?php echo base_url('Controller_48h/createRegime'); ?>" method="post">
->>>>>>> Stashed changes
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nom" class="form-label">Nom Regime</label>
@@ -56,8 +43,6 @@ $base_url = base_url();
                 veuiller entrer un Nom valide.
               </div>
             </div>
-<<<<<<< Updated upstream
-    
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">type de regime</label>
               <select class="form-select" id="regimeType" name="regimeType" required>
@@ -65,7 +50,6 @@ $base_url = base_url();
                 <option value="1">Regime minceur(Diminuer mon poids)</option>
                 <option value="2">Regime grosseur(Augmenter mon poids)</option>
                 <option value="3">Garde ma ligne Actuelle(ni mincir ni grossir)</option>
-=======
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">Objectif Du Regime</label>
               <select class="form-select" id="regimeType" name="regimeType" required>
@@ -73,7 +57,6 @@ $base_url = base_url();
                 <?php foreach($objectif as $o) { ?>
                 <option value="<?php echo $o->objectif; ?>"><?php echo $o->o_d ;?></option>
                 <?php } ?>
->>>>>>> Stashed changes
               </select>
               <div class="invalid-feedback">
                 veuiller entrer un Nom valide.
@@ -85,7 +68,6 @@ $base_url = base_url();
             <div class="text-center" ><p class="h5" >choisir le(s) plat(s) qui compose le regime</p></div>
             <div class="col-12">
                 <div class="row">
-<<<<<<< Updated upstream
                   <div class="col-md-6 col-lg-4 col-container">
                     <img src="<?php echo base_url();?>/assets/img/profil.jpg" width="50%" class="img-fluid" alt="" srcset="">
                     <p>
@@ -107,7 +89,6 @@ $base_url = base_url();
                       <label class="form-check-label" for="plat"> plat 3</label>
                     </p>
                   </div>
-=======
                   <?php foreach($plat as $p) { ?>
                   <div class="col-md-6 col-lg-4 col-container">
                     <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
@@ -117,12 +98,10 @@ $base_url = base_url();
                     </p>
                   </div>
                   <?php } ?>
->>>>>>> Stashed changes
                   
                 </div>
             </div>
             </div>
-<<<<<<< Updated upstream
           <hr class="my-4">
           <div class="col-12">
             <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
@@ -140,7 +119,6 @@ $base_url = base_url();
         </form>
       </div>
     </center>
-=======
             <hr class="my-4">
             <div class="col-12">
               <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
@@ -158,7 +136,6 @@ $base_url = base_url();
       </center>
         </div>
           <div class="my-4">
->>>>>>> Stashed changes
       </div>
   </section>
   

@@ -1,6 +1,5 @@
 <?php
-    class Admin extends CI_Model{
-
+    class Admin extends CI_Model {
 
         //---------------porte monnai----------------//
         function addToPorteMonnai($idCode,$idUser){
