@@ -19,7 +19,10 @@ class Controller_48h extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     //--------------------CRUD------------------------//
     public function cancelCode($idParam){
         // echo $idParam;
@@ -36,7 +39,62 @@ class Controller_48h extends CI_Controller {
         $this->load->model('Admin');
         $this->Admin->validCode($idCode,$iduser);
         $this->toHomeAdmin();
+<<<<<<< Updated upstream
 
+=======
+    }
+
+    public function supReg(){
+        $idReg = $this->input->get('id');
+        // var_dump($idReg);
+        $this->load->model('Admin');
+        $this->Admin->deleteRegime($idReg);
+
+        $this->toListeRegime();
+    }
+
+    public function updateRegime(){
+        $id = $this->input->post('idr');
+        $nom = $this->input->post('nom');
+        $objectif = $this->input->post('regimeType');
+        $plat = $this->input->post('plat');
+        $sport = $this->input->post('sport');
+
+        // var_dump($id);
+        // var_dump($nom);
+        // var_dump($objectif);
+        // var_dump($plat);
+        // var_dump($sport);
+
+        $this->load->model('Admin');
+        $this->Admin->myUpdate('regime','id',$id,array('designation' => $nom));
+
+        $this->toHomeAdmin();
+    }
+
+    public function createRegime(){
+        $nom = $this->input->post('nom');
+        $objectif = $this->input->post('regimeType');
+        $plat = $this->input->post('plat');
+        $sport = $this->input->post('sport');
+
+        // var_dump($nom);
+        // var_dump($objectif);
+        // var_dump($plat);
+        // var_dump($sport);
+
+        $tabData = array(
+            'regime' => array('designation' => $nom),
+            'plat' => $plat,
+            'sport' => $sport
+        );
+
+        // var_dump($tabData);
+        $this->load->model('Admin');
+        $this->Admin->createRegime($tabData);
+
+        $this->toListeRegime();
+>>>>>>> Stashed changes
     }
 
     //------------------- WALLET -----------------------//
@@ -80,10 +138,25 @@ class Controller_48h extends CI_Controller {
             'genre' => $this->input->post('sexe'),
             'date_naissance' => $this->input->post('dtn')
         );
+<<<<<<< Updated upstream
         $this->load->model('Sign');
         $val = $this->Sign->IsValuesNull($tabLog);
         if($val==0){                                // procede si les valeurs ne sont pas nulles
             $id = $this->Sign->myInsert('details_utilisateur',$tabLog);        /// insertion dans la table correspondant au sign up
+=======
+        $tabObj = array(
+            'idobjectif' => $this->input->post('objectif'),
+            'iduser' => $this->input->post('id')
+        );
+
+        $this->load->model('Sign');
+        $val = $this->Sign->IsValuesNull($tabLog);
+        $val2 = $this->Sign->IsValuesNull($tabObj);
+
+        if($val==0 && $val2==0){                                // procede si les valeurs ne sont pas nulles
+            $this->Sign->myInsert('details_utilisateur',$tabLog);        /// insertion dans la table correspondant au sign up
+            $this->Sign->myInsert('user_objectif',$tabObj);        /// insertion dans la table correspondant au sign up
+>>>>>>> Stashed changes
 
             $this->load->helper('url');                       /// et recupere l'id de l'user
 		    $this->load->view('home');
@@ -106,7 +179,17 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toAddCompletion(){
+<<<<<<< Updated upstream
         $dataRegime['allRegime'] = $this->getRegime();
+=======
+        // $dataRegime['allRegime'] = $this->getRegime();
+        // $this->load->helper('url');
+		// $this->load->view('AddCompletion',$dataRegime);
+
+        $this->load->model('Sign');
+        $dataRegime['allObjectif'] = $this->Sign->getValues('objectif');
+        // var_dump($dataRegime);
+>>>>>>> Stashed changes
         $this->load->helper('url');
 		$this->load->view('AddCompletion',$dataRegime);
     }
@@ -125,6 +208,40 @@ class Controller_48h extends CI_Controller {
     }
 
     //----------------- REDIRECTION BACK -----------------//
+<<<<<<< Updated upstream
+=======
+    public function toUpdateRegime(){
+        $idreg = $this->input->get('id');
+        $this->load->model('Sign');
+
+        // $objectif['objectif'] = $this->Sign->getCond('objectif_regime','regime',$idreg);
+        // $plat['plat'] = $this->Sign->getCond('regime_plat','regime',$idreg);
+        // $sport['sport'] = $this->Sign->getCond('regime_sport','regime',$idreg);
+
+        $objectif['objectif'] = $this->Sign->getValues('v_objectif_regime');
+        $plat['plat'] = $this->Sign->getValues('plat');
+        $sport['sport'] = $this->Sign->getValues('sport');
+
+        $allData = array_merge(array_merge(array_merge($plat,$sport),$objectif),array('idreg'=>$idreg));
+
+        // var_dump($allData);
+        $this->load->helper('url');
+        $this->load->view('updateRegime',$allData);
+    }
+    public function toAddRegime(){
+        $this->load->model('Sign');
+
+        $objectif['objectif'] = $this->Sign->getValues('v_objectif_regime');
+        $plat['plat'] = $this->Sign->getValues('plat');
+        $sport['sport'] = $this->Sign->getValues('sport');
+
+        $allData = array_merge(array_merge($plat,$sport),$objectif);
+
+        // var_dump($allData);
+        $this->load->helper('url');
+        $this->load->view('AddRegime',$allData);
+    }
+>>>>>>> Stashed changes
 
     public function toHomeAdmin(){
         $this->load->model('Admin');
@@ -135,8 +252,15 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toListeRegime(){
+<<<<<<< Updated upstream
         $this->load->helper('url');
 		$this->load->view('listRegime');
+=======
+        $this->load->model('Sign');
+        $regime['regime'] = $this->Sign->getValues('regime');
+        $this->load->helper('url');
+		$this->load->view('listRegime',$regime);
+>>>>>>> Stashed changes
     }
     
     public function toListActivite(){

@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+<<<<<<< Updated upstream
+=======
+
+// var_dump($plat);
+// var_dump($sport);
+// var_dump($objectif);
+// var_dump($idreg);
+>>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -30,7 +38,11 @@ $base_url = base_url();
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Modifier un Regime</p></div>
       <div class="my-4"></div>
       <center>
+<<<<<<< Updated upstream
         <form class="needs-validation" novalidate>
+=======
+        <form class="needs-validation" action="<?php echo base_url('Controller_48h/updateRegime'); ?>" method="post">
+>>>>>>> Stashed changes
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nom" class="form-label">Nom Regime</label>
@@ -39,6 +51,7 @@ $base_url = base_url();
                 veuiller entrer un Nom valide.
               </div>
             </div>
+<<<<<<< Updated upstream
     
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">type de regime</label>
@@ -47,6 +60,16 @@ $base_url = base_url();
                 <option value="1">Regime minceur(Diminuer mon poids)</option>
                 <option value="2">Regime grosseur(Augmenter mon poids)</option>
                 <option value="3">Garde ma ligne Actuelle(ni mincir ni grossir)</option>
+=======
+            <input type="hidden" name="idr" value="<?php echo $idreg; ?>">
+            <div class="col-sm-6">
+              <label for="regimeType" class="form-label">Objectif Du Regime</label>
+              <select class="form-select" id="regimeType" name="regimeType" required>
+                <option value="">Choisir un objectif ...</option>
+                <?php foreach($objectif as $o) { ?>
+                <option value="<?php echo $o->objectif; ?>"><?php echo $o->o_d ;?></option>
+                <?php } ?>
+>>>>>>> Stashed changes
               </select>
               <div class="invalid-feedback">
                 veuiller entrer un Nom valide.
@@ -58,6 +81,7 @@ $base_url = base_url();
             <div class="text-center" ><p class="h5" >choisir le(s) plat(s) qui compose le regime</p></div>
             <div class="col-12">
                 <div class="row">
+<<<<<<< Updated upstream
                   <div class="col-md-6 col-lg-4 col-container">
                     <img src="<?php echo base_url();?>/assets/img/profil.jpg" width="50%" class="img-fluid" alt="" srcset="">
                     <p>
@@ -79,6 +103,17 @@ $base_url = base_url();
                       <label class="form-check-label" for="plat"> plat 3</label>
                     </p>
                   </div>
+=======
+                  <?php foreach($plat as $p) { ?>
+                  <div class="col-md-6 col-lg-4 col-container">
+                    <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
+                    <p>
+                      <input type="checkbox" class="form-check-input" value="<?php echo $p->id; ?>" name="plat[]" id="plat">
+                      <label class="form-check-label" for="plat"><?php echo $p->designation; ?></label>
+                    </p>
+                  </div>
+                  <?php } ?>
+>>>>>>> Stashed changes
                   
                 </div>
             </div>
@@ -86,12 +121,19 @@ $base_url = base_url();
             <hr class="my-4">
             <div class="col-12">
               <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
+<<<<<<< Updated upstream
               <input type="checkbox" class="form-check-input" name="plat" id="plat">
               <label class="form-check-label" for="plat"> course a pied</label>
               <input type="checkbox" class="form-check-input" name="plat" id="plat">
               <label class="form-check-label" for="plat"> Natation</label>
               <input type="checkbox" class="form-check-input" name="plat" id="plat">
               <label class="form-check-label" for="plat"> velo</label>
+=======
+              <?php foreach($sport as $sp) { ?>
+              <input type="checkbox" class="form-check-input" value="<?php echo $sp->id; ?>" name="sport[]" id="sport">
+              <label class="form-check-label" for="sport"><?php echo $sp->designation ;?></label>
+              <?php } ?>
+>>>>>>> Stashed changes
             </div>
             <hr class="my-4">
             <center>
