@@ -1,33 +1,49 @@
 <?php
     class Admin extends CI_Model{
 
+
         //---------------porte monnai----------------//
         function addToPorteMonnai($idCode,$idUser){
-            $valueCode = $this->db->select('valeur')->where('idCode', $idCode['idCode'])->get('code')->row()->valeur;
+            // var_dump($idCode);
+            // var_dump($idUser);
+            $valueCode = $this->db->select('valeur')->where('idcode', $idCode)->get('code')->row()->valeur;
 
             // Récupérer la valeur précédente de la colonne 'colonne1' pour l'enregistrement spécifique
-            $ancienneValeur = $this->db->select('valeur')->where('idUser', $idUser)->get('porte_monnai')->row()->valeur;
+            $ancienneValeur = $this->db->select('valeur')->where('iduser', $idUser)->get('porte_monnai')->row()->valeur;
 
             // Calculer la nouvelle valeur en ajoutant l'ancienne valeur et la nouvelle valeur
             $nouvelleValeur = $ancienneValeur + $valueCode;
 
             // Mettre à jour la colonne 'colonne1' avec la nouvelle valeur
-            $this->db->where('idUser', $idUser);
+            $this->db->where('iduser', $idUser);
             $this->db->update('porte_monnai', array('valeur' => $nouvelleValeur));
 
         }
 
         //---------------code---------------------//
-        function validCode($idCode,$idUser){                // valider le code par admin
+        function cancelCode($idCode){
+            $this->db->where('idcode', $idCode);
+            $this->db->update('code', array('etat' =>'1'));
+        }
+
+        function validCode($idCode,$idUser){                // ajouter valeur du code par admin(validation)
             $this->addToPorteMonnai($idCode,$idUser);
-            $this->invaldCode($idCode);
+            $this->invalidateCode($idCode);
         }
 
-        function invalidCode($idCode){                      // invalider les code apres validations
-            $this->db->where('idCode', $idCode);
-            $this->db->update('etat', 0);                   // etat = 1 valide ; etat = 0 invalid
+        function invalidateCode($idCode){                      // invalider les code apres validations
+            $this->db->where('idcode', $idCode);
+            $this->db->update('code', array('etat' => '-1'));                   // etat = 1 valide ; etat = 0 en attente ; etat = -1 invalid
         }
 
+        function getWaitingCode(){
+            $this->db->select('*');
+            $this->db->from('v_code_user');
+            $this->db->where('etat', '0');
+            return $this->db->get()->result();
+        }
+
+        //-------------------plat--------------------------//
         function createPlat($tabPlat){
             $this->db->insert('plat',$tabPlat);   // $tabPlat['designation/type_plat/image_path']
         }

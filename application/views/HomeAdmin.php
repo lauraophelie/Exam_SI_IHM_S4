@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
+// var_dump($waitingCode);
 ?>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
@@ -39,33 +41,18 @@ $base_url = base_url();
           </tr>
           </thead>
           <tbody class="table-dark">
+            <?php $i = 1; foreach($waitingCode as $values) { ?>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
+            <th scope="row"><?php echo $i; $i++; ?></th>
+            <td><?php echo $values->nom;?></td>
+            <td><?php echo $values->idcode;?></td>
             <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
+              <?php $idParam = $values->idcode; $idu = $this->session->userdata('id'); ?>
+                <a href="<?php echo base_url('Controller_48h/validateCode') . "?idcode=" . $idParam . "&id=" . $idu;   ?>"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
+                <a href="<?php echo base_url('Controller_48h/cancelCode') .'/'. $idParam; ?>"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
             </td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
-            <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>xxx xxxx xxxxxx</td>
-            <td>
-                <a href="#"><input type="button" value="Confirmer" name="confirmer" id="confirmer" class="btn btn-outline-success"></a>
-                <a href="#"><input type="button" value="Refuser" name="refuser" id="refuser" class="btn btn-outline-danger"></a>
-            </td>
-          </tr>
+          <?php } ?>
           </tbody>
         </table>
         </div>

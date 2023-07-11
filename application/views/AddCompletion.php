@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+// var_dump($allRegime);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -30,7 +31,9 @@ $base_url = base_url();
 <div class="container">
     <center>
       <h4 class="mb-3" style="margin: 36px;color:#0d6efd;">Ajouter ma completion</h4>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" action="<?php echo base_url('Controller_48h/insertDetailUser');?>" method="post">
+        <input type="hidden" name="id" value="<?php echo $this->session->userdata('id');?>">
+
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="taille" class="form-label">taille (en cm)</label>
@@ -48,8 +51,8 @@ $base_url = base_url();
             </div>
           </div>
           <div class="col-sm-6">
-            <label for="age" class="form-label">Age</label>
-            <input type="number" min="14" step="1" max="110" class="form-control" id="age" name="age" placeholder="inserez votre age" required>
+            <label for="dtn" class="form-label">Date de Naissance</label>
+            <input type="date" min="14" step="1" max="110" class="form-control" id="dtn" name="dtn" placeholder="inserez votre date de naissance" required>
             <div class="invalid-feedback">
               Veuillez inserez une age valide.
             </div>
@@ -58,8 +61,8 @@ $base_url = base_url();
             <label for="sexe" class="form-label">Sexe</label>
             <select class="form-select" id="sexe" name="sexe" required>
               <option value="">Choisir votre sexe ...</option>
-              <option value="1">Homme</option>
-              <option value="2">Femme</option>
+              <option value="M">Homme</option>
+              <option value="F">Femme</option>
             </select>
             <div class="invalid-feedback">
               Choisissez un sexe .
@@ -69,9 +72,9 @@ $base_url = base_url();
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
               <option value="">Choisir un regime ...</option>
-              <option value="1">Regime minceur(Diminuer mon poids)</option>
-              <option value="2">Regime grosseur(Augmenter mon poids)</option>
-              <option value="3">Garde ma ligne Actuelle(ni mincir ni grossir)</option>
+              <?php  foreach($allRegime as $valueReg) { ?>
+              <option value="<?php echo $valueReg->id;?>"><?php echo $valueReg->designation;?></option>
+              <?php  } ?>
             </select>
             <div class="invalid-feedback">
               Choisissez un regime.

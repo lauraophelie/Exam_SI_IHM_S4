@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+// echo $this->session->userdata('id');
+// var_dump($this->session->userdata());
+// var_dump($wallet);
 ?>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
@@ -32,15 +35,15 @@ $base_url = base_url();
       <div class="profile-info">
     <div class="col-4">
       <div class="user-details">
-        <h2>Mon Porte Feuille</h2>
-        <p>Mon compte: 250,000.59 ar</p>
+        <h2><?php echo $wallet[0]->nom; ?></h2>
+        <p>Mon compte: <?php echo $wallet[0]->valeur; ?> Ar</p>
       </div>
     </div>
 </div>
 </div>
     <center>
         <h4 class="mb-3" style="margin: 36px;color:#0d6efd;">Inserez code </h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" action="<?php echo base_url('Controller_48h/verifCode');?>" method="post">
             <div class="col-sm-6">
                 <label for="code" class="form-label">Code</label>
                 <div class="input-group has-validation">
@@ -50,6 +53,7 @@ $base_url = base_url();
                   </div>
                 </div>
               </div>
+              <input type="hidden" name="id" value="<?php echo $this->session->userdata('id');?>">
           <div class="my-4">
           <center>
           <button class=" btn btn-outline-success btn-lg" type="submit">Confirmer code</button>
@@ -58,8 +62,8 @@ $base_url = base_url();
       </div>
     </center>
   </section>
-  <Script src="../assets/js/form-validation.js"></Script>
-  <script src="../assets/js/Home.js"></script>
+  <Script src="<?php echo base_url();?>/assets/js/form-validation.js"></Script>
+  <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 <footer class="footer mt-auto py-3 bg-dark">
   <div class="container">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -71,7 +75,7 @@ $base_url = base_url();
   </div>
 </footer>
 
-  <script src="../assets/style/Home.js"></script>
+  <script src="<?php echo base_url();?>/assets/style/Home.js"></script>
 
 </body>
 </html>
