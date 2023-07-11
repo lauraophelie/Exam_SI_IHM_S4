@@ -113,13 +113,25 @@
               Choisissez un sexe .
             </div>
           </div>  
-          <div class="col-12">
+          <div class="col-sm-6">
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
               <option value="">Choisir un regime ...</option>
               <option value="1">Regime minceur(Diminuer mon poids)</option>
               <option value="2">Regime grosseur(Augmenter mon poids)</option>
               <option value="3">Garde ma ligne Actuelle(ni mincir ni grossir)</option>
+            </select>
+            <div class="invalid-feedback">
+              Choisissez un regime.
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="objectif" class="form-label">objectif</label>
+            <select class="form-select" id="objectif" name="objectif" required>
+              <option value="">Choisir un objectif ...</option>
+              <option value="1">objectif minceur</option>
+              <option value="2">objectif grosseur</option>
+              <option value="3">Atteinre IMC ideal</option>
             </select>
             <div class="invalid-feedback">
               Choisissez un regime.
