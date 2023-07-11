@@ -35,6 +35,31 @@ CREATE OR REPLACE VIEW v_imc_utilisateur AS(
     GROUP BY utilisateur, poids, taille
 );
 
+
+CREATE TABLE IF NOT EXISTS imc_ideal_utilisateur(
+    age_min INTEGER,
+    age_max INTEGER,
+    imc_min INTEGER,
+    imc_max INTEGER,
+    genre genre
+);
+
+INSERT INTO imc_ideal_utilisateur(age_min, age_max, imc_min, imc_max, genre) VALUES
+                                (18, 24, 20, 25, 'M'),
+                                (25, 34, 21, 26, 'M'),
+                                (35, 44, 22, 27, 'M'),
+                                (45, 54, 23, 28, 'M'),
+                                (55, 64, 24, 29, 'M'),
+                                (64, 65, 25, 30, 'M');
+
+INSERT INTO imc_ideal_utilisateur(age_min, age_max, imc_min, imc_max, genre) VALUES
+                                (18, 24, 19, 24, 'F'),
+                                (25, 34, 20, 25, 'F'),
+                                (35, 44, 21, 26, 'F'),
+                                (45, 54, 22, 27, 'F'),
+                                (55, 64, 23, 28, 'F'),
+                                (64, 65, 24, 29, 'F');
+
 ------------------------- options gold -------------------------------------------
 
 CREATE SEQUENCE option_gold_id_seq START WITH 1 INCREMENT BY 1;
