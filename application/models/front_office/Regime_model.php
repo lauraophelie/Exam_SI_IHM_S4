@@ -10,6 +10,7 @@
             $result = $query->result_array();
             return $result;
         }
+        
         public function get_plats_regime($regime) {
             $sql = "SELECT * FROM v_regime_plat WHERE regime = '%s'";
             $sql = sprintf($sql, $regime);
@@ -18,6 +19,7 @@
             $result = $query->result_array();
             return $result;
         }
+
         public function get_sports_regime($regime) {
             $sql = "SELECT * FROM v_regime_sport WHERE regime = '%s'";
             $sql = sprintf($sql, $regime);
@@ -26,6 +28,25 @@
             $result = $query->result_array();
             return $result;
         }
+
+        public function get_tarifs_regime($regime) {
+            $sql = "SELECT * FROM v_tarifs_regime WHERE regime = '%s'";
+            $sql = sprintf($sql, $regime);
+
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            return $result;
+        }
+
+        public function details_regime($regime) {
+            $plats = $this->get_plats_regime($regime);
+            $sports = $this->get_sports_regime($regime);
+            $details = array(
+                "plats" => $plats,
+                "sports" => $sports
+            );
+        }
+
         public function suggestions($objectif) {
             $regimes = $this->get_regime($objectif);
             $result = array();
@@ -44,4 +65,4 @@
             return $result;
         }
     }
-?>
+?>j  
