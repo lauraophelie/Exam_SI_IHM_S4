@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 // var_dump($allRegime);
+<<<<<<< Updated upstream
+=======
+// var_dump($allObjectif);
+>>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -68,6 +72,7 @@ $base_url = base_url();
               Choisissez un sexe .
             </div>
           </div>  
+<<<<<<< Updated upstream
           <div class="col-12">
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
@@ -75,9 +80,32 @@ $base_url = base_url();
               <?php  foreach($allRegime as $valueReg) { ?>
               <option value="<?php echo $valueReg->id;?>"><?php echo $valueReg->designation;?></option>
               <?php  } ?>
+=======
+
+          <!-- <div class="col-12">
+            <label for="regime" class="form-label">Regime</label>
+            <select class="form-select" id="regime" name="regime" required>
+              <option value="">Choisir un regime ...</option>
+              <?php  //foreach($allRegime as $valueReg) { ?>
+              <option value="<?php// echo $valueReg->id;?>"><?php //echo $valueReg->designation;?></option>
+              <?php  //} ?>
+>>>>>>> Stashed changes
             </select>
             <div class="invalid-feedback">
               Choisissez un regime.
+            </div>
+          </div> -->
+
+          <div class="col-12">
+            <label for="objectif" class="form-label">Objectif</label>
+            <select class="form-select" id="objectif" name="objectif" required>
+              <option value="">Choisir un objectif ...</option>
+              <?php  foreach($allObjectif as $valueObj) { ?>
+              <option value="<?php echo $valueObj->id;?>"><?php echo $valueObj->designation;?></option>
+              <?php  } ?>
+            </select>
+            <div class="invalid-feedback">
+              Choisissez un objectif.
             </div>
           </div>
   
