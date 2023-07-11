@@ -1,10 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
-<<<<<<< Updated upstream
-=======
 // var_dump($regime);
->>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -34,11 +31,7 @@ $base_url = base_url();
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Liste des Regimes</p></div>
       <div class="my-4">
         <div class="text-center">
-<<<<<<< Updated upstream
-        <a href="./AddRegime.html"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
-=======
         <a href="<?php echo base_url('Controller_48h/toAddRegime');?>"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
->>>>>>> Stashed changes
     </div>
     <div class="my-4"></div>
         <div class="text-center">
@@ -47,53 +40,10 @@ $base_url = base_url();
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nom du regime</th>
-<<<<<<< Updated upstream
-            <th scope="col">prix( par nombre de jour)</th>
-=======
->>>>>>> Stashed changes
             <th scope="col"> -- </th>
           </tr>
           </thead>
           <tbody class="table-dark">
-<<<<<<< Updated upstream
-          <tr>
-            <th scope="row">1</th>
-            <td>100% Sans glutene</td>
-            <td>100.000 ar</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>regime speciale carnivore</td>
-            <td>100.000 ar</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>regime vegetarien</td>
-            <td>100.000 ar</td>
-            <td>
-                <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
-                <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
-                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        </div>
-        <div class="text">
-          vous verrez ici chers Administrateur la liste des regimes diponible vous pouvez ajouter,
-          supprimer, modifier et voir les details des regimes comme bon vous le semble. 
-        </div>
-=======
             <?php $i =1; foreach($regime as $r) { ?>
           <tr>
             <th scope="row"><?php echo $i; $i++; ?></th>
@@ -112,7 +62,6 @@ $base_url = base_url();
           vous verrez ici chers Administrateur la liste des regimes diponible vous pouvez ajouter,
           supprimer, modifier et voir les details des regimes comme bon vous le semble. 
         </div> -->
->>>>>>> Stashed changes
       </div>
   </section>
   

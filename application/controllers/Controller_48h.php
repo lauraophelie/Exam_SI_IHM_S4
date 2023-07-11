@@ -19,10 +19,6 @@ class Controller_48h extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     //--------------------CRUD------------------------//
     public function cancelCode($idParam){
         // echo $idParam;
@@ -39,9 +35,6 @@ class Controller_48h extends CI_Controller {
         $this->load->model('Admin');
         $this->Admin->validCode($idCode,$iduser);
         $this->toHomeAdmin();
-<<<<<<< Updated upstream
-
-=======
     }
 
     public function supReg(){
@@ -51,6 +44,10 @@ class Controller_48h extends CI_Controller {
         $this->Admin->deleteRegime($idReg);
 
         $this->toListeRegime();
+    }
+
+    public function updateActiv(){
+
     }
 
     public function updateRegime(){
@@ -94,7 +91,16 @@ class Controller_48h extends CI_Controller {
         $this->Admin->createRegime($tabData);
 
         $this->toListeRegime();
->>>>>>> Stashed changes
+    }
+
+    public function suppAct(){
+        $id = $this->input->get('id');
+        // var_dump($id);
+        $this->load->model('Admin');
+        $this->Admin->myDel('regime_sport','sport',$id);
+        $this->Admin->myDel('sport','id',$id);
+
+        $this->toListActivite();
     }
 
     //------------------- WALLET -----------------------//
@@ -138,12 +144,6 @@ class Controller_48h extends CI_Controller {
             'genre' => $this->input->post('sexe'),
             'date_naissance' => $this->input->post('dtn')
         );
-<<<<<<< Updated upstream
-        $this->load->model('Sign');
-        $val = $this->Sign->IsValuesNull($tabLog);
-        if($val==0){                                // procede si les valeurs ne sont pas nulles
-            $id = $this->Sign->myInsert('details_utilisateur',$tabLog);        /// insertion dans la table correspondant au sign up
-=======
         $tabObj = array(
             'idobjectif' => $this->input->post('objectif'),
             'iduser' => $this->input->post('id')
@@ -156,7 +156,6 @@ class Controller_48h extends CI_Controller {
         if($val==0 && $val2==0){                                // procede si les valeurs ne sont pas nulles
             $this->Sign->myInsert('details_utilisateur',$tabLog);        /// insertion dans la table correspondant au sign up
             $this->Sign->myInsert('user_objectif',$tabObj);        /// insertion dans la table correspondant au sign up
->>>>>>> Stashed changes
 
             $this->load->helper('url');                       /// et recupere l'id de l'user
 		    $this->load->view('home');
@@ -174,14 +173,14 @@ class Controller_48h extends CI_Controller {
 		$this->load->view('home');
     }
     public function toProfilUser(){
+        $this->load->model('Sign');
+        $tab['user'] = $this->Sign->getCond('utilisateur','id',$this->session->userdata('id'));
+        // var_dump($tab);
         $this->load->helper('url');
-		$this->load->view('ProfilUser');
+		$this->load->view('ProfilUser',$tab);
     }
 
     public function toAddCompletion(){
-<<<<<<< Updated upstream
-        $dataRegime['allRegime'] = $this->getRegime();
-=======
         // $dataRegime['allRegime'] = $this->getRegime();
         // $this->load->helper('url');
 		// $this->load->view('AddCompletion',$dataRegime);
@@ -189,7 +188,6 @@ class Controller_48h extends CI_Controller {
         $this->load->model('Sign');
         $dataRegime['allObjectif'] = $this->Sign->getValues('objectif');
         // var_dump($dataRegime);
->>>>>>> Stashed changes
         $this->load->helper('url');
 		$this->load->view('AddCompletion',$dataRegime);
     }
@@ -208,8 +206,6 @@ class Controller_48h extends CI_Controller {
     }
 
     //----------------- REDIRECTION BACK -----------------//
-<<<<<<< Updated upstream
-=======
     public function toUpdateRegime(){
         $idreg = $this->input->get('id');
         $this->load->model('Sign');
@@ -228,6 +224,7 @@ class Controller_48h extends CI_Controller {
         $this->load->helper('url');
         $this->load->view('updateRegime',$allData);
     }
+
     public function toAddRegime(){
         $this->load->model('Sign');
 
@@ -241,7 +238,6 @@ class Controller_48h extends CI_Controller {
         $this->load->helper('url');
         $this->load->view('AddRegime',$allData);
     }
->>>>>>> Stashed changes
 
     public function toHomeAdmin(){
         $this->load->model('Admin');
@@ -252,25 +248,71 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toListeRegime(){
-<<<<<<< Updated upstream
-        $this->load->helper('url');
-		$this->load->view('listRegime');
-=======
         $this->load->model('Sign');
         $regime['regime'] = $this->Sign->getValues('regime');
         $this->load->helper('url');
 		$this->load->view('listRegime',$regime);
->>>>>>> Stashed changes
     }
     
     public function toListActivite(){
+        $this->load->model('Sign');
+        $listeActiv['sport'] = $this->Sign->getValues('sport');
         $this->load->helper('url');
-		$this->load->view('listActivite');
+		$this->load->view('listActivite',$listeActiv);
     }
 
     public function toAddDish(){
         $this->load->helper('url');
 		$this->load->view('AddDish');
+    }
+
+    public function toUpdateActivity(){
+        $id = $this->input->get('id');
+        // var_dump($id);
+        $this->load->model('Admin');
+        $this->load->model('Sign');
+        $this->Admin->myDel('sport','id',$id);
+
+        $theSport['sport'] = $this->Sign->getCond('sport','id',$id);
+
+        $this->load->helper('url');
+		$this->load->view('updateActivity',$theSport);
+    }
+
+    public function toTableauBord(){
+        $this->load->helper('url');
+		$this->load->view('TableauBord');
+    }
+
+    public function toAddCode(){
+        $this->load->helper('url');
+		$this->load->view('AddCode');
+    }
+
+    public function toAddActivity(){
+        $this->load->helper('url');
+		$this->load->view('AddActivity');
+    }
+
+    public function addNewCode(){
+        $tab = array(
+            'idcode' => $this->input->post('code'),
+            'valeur' => $this->input->post('val')
+        );
+        $this->load->model('Sign');
+        $this->Sign->myInsert('code',$tab);
+
+        $this->toListCode();
+    }
+
+    public function addNewActivity(){
+        $tab = array(
+            'designation' => $this->input->post('nom')
+        );
+        $this->load->model('Sign');
+        $this->Sign->myInsert('sport',$tab);
+
+        $this->toListActivite();
     }
     
     //------------- LOG --------------//

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+// var_dump($user)
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,8 +33,8 @@ $base_url = base_url();
       <img src="<?php echo base_url();?>/assets/img/profil.jpg" alt="Profil Image">
     <div class="col-4">
       <div class="user-details">
-        <h2>Nom Utilisateur</h2>
-        <p>Email: utilisateur@Gmail.com</p>
+        <h2><?php echo $user[0]->nom; ?></h2>
+        <p>Email: <?php echo $user[0]->email; ?></p>
       </div>
     </div>
     </div>
