@@ -15,23 +15,23 @@
       <li>
        <a href="<?php echo base_url('Controller_48h/toListeRegime');?>">
          <i class='bx bx-food-menu' ></i>
-         <span class="links_name">liste Regime</span>
+         <span class="links_name"> Liste des régimes </span>
        </a>
-       <span class="tooltip">liste Regime</span>
+       <span class="tooltip"> Liste des régimes </span>
      </li>
      <li>
        <a href="<?php echo base_url('Controller_48h/toListActivite');?>">
          <i class='bx bx-cycling' ></i>
-         <span class="links_name">Liste Activité</span>
+         <span class="links_name"> Liste des activités </span>
        </a>
-       <span class="tooltip">Liste Activité</span>
+       <span class="tooltip">Liste des activités </span>
      </li>
      <li>
       <a href="<?php echo base_url('Controller_48h/toAddDish');?>">
         <i class='bx bx-dish' ></i>
-        <span class="links_name">Ajouter Plat</span>
+        <span class="links_name">Ajouter un plat</span>
       </a>
-      <span class="tooltip">Ajouter Plat</span>
+      <span class="tooltip">Ajouter un plat</span>
     </li>
     <li>
       <a href="<?php echo base_url('Controller_48h/toAddCode'); ?>">
@@ -51,9 +51,9 @@
      <li>
       <a href="#">
         <i class='bx bx-plus-circle' ></i>
-        <span class="links_name">parametre necessaire</span>
+        <span class="links_name"> Paramètre nécessaire</span>
       </a>
-      <span class="tooltip">parametre necessaire</span>
+      <span class="tooltip"> Paramètre nécessaire</span>
     </li>
      <li>
       <li class="profile" style="background-color: black;">
@@ -61,7 +61,9 @@
          <div class="profile-details">
            <div class="name_job">
              <div class="name">Log out</div>
+
              <div class="job"></div>
+
            </div>
          </div>
          <i class='bx bx-log-out' id="log_out" style="background-color: black;"></i>

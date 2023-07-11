@@ -2,10 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 
-// var_dump($plat);
-// var_dump($sport);
-// var_dump($objectif);
-// var_dump($idreg);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,6 +40,7 @@ $base_url = base_url();
                 veuiller entrer un Nom valide.
               </div>
             </div>
+
             <input type="hidden" name="idr" value="<?php echo $idreg; ?>">
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">Objectif Du Regime</label>
@@ -63,6 +60,7 @@ $base_url = base_url();
             <div class="text-center" ><p class="h5" >choisir le(s) plat(s) qui compose le regime</p></div>
             <div class="col-12">
                 <div class="row">
+
                   <?php foreach($plat as $p) { ?>
                   <div class="col-md-6 col-lg-4 col-container">
                     <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
@@ -79,6 +77,7 @@ $base_url = base_url();
             <hr class="my-4">
             <div class="col-12">
               <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>
+
               <?php foreach($sport as $sp) { ?>
               <input type="checkbox" class="form-check-input" value="<?php echo $sp->id; ?>" name="sport[]" id="sport">
               <label class="form-check-label" for="sport"><?php echo $sp->designation ;?></label>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -24,16 +23,16 @@
 </nav>
     <div class="container">
       <div class="text"></div>
-      <div class="text-center" style="color:#0d6efd;"><p class="h2" >Ajouter un Plat</p></div>
+      <div class="text-center" style="color:#0d6efd;"><p class="h2"> Ajouter un Plat </p> </div>
       <div class="my-4"></div>
       <center>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="nomPlat" class="form-label">Nom du plat</label>
+              <label for="nomPlat" class="form-label"> Nom du plat </label>
               <input type="text" class="form-control" id="nomPlat" name="nomPlat" placeholder="inserez le nom du plat" required>
               <div class="invalid-feedback">
-                veuiller entrer un Nom valide.
+                Veuillez entrer un nom valide.
               </div>
             </div>
     
@@ -51,7 +50,7 @@
               </div>
             </div>
             <div class="col-12">
-                <label class="form-label" for="customFile">Picture</label>
+                <label class="form-label" for="customFile"> Image </label>
                 <input type="file" class="form-control form-select" id="customFile" required>
                 <div class="invalid-feedback">
                   Choisissez un fichier s'il vous plait
@@ -59,10 +58,8 @@
           </div>
             
             </div>
-    
-          <hr class="my-4">
           <center>
-          <button class=" btn btn-outline-success btn-lg" type="submit">Approuver ma reservation</button>
+          <button class=" btn btn-outline-success btn-lg" type="submit"> Valider </button>
           </center>
         </form>
       </div>
@@ -70,17 +67,6 @@
       </div>
   </section>
   
-<footer class="footer mt-auto py-3 bg-dark">
-  <div class="container">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">Addresse: IT University, Antananarivo, Andoharanofotsy</div></li>
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">Contact: +261 12 345 67</div></li>
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">E-mail: Eemple@Gmail.Com</div></li>
-    </ul>
-    <p class="text-center " style="color:#0d6efd;">Examen S4 © 2023 IT University</p>
-  </div>
-</footer>
-
   <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
   <script src="<?php echo base_url();?>/assets/js/form-validation.js"></script>
 

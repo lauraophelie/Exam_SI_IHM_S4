@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'regime',
-	'password' => 'regime',
-	'database' => 'regime',
+	'hostname' => 'postgresql-exams4si.alwaysdata.net',
+	'username' => 'exams4si',
+	'password' => 'examihmsi',
+	'database' => 'exams4si_regime',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

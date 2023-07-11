@@ -116,14 +116,6 @@ CREATE TABLE IF NOT EXISTS proportion_plat(
     sucre DECIMAL DEFAULT 0
 );
 
-SELECT
-    p.id as plat,
-    p.designation as nom_plat,
-    t.designation as type_plat,
-    p.image_path as photo_plat
-FROM plat p
-JOIN type_plat t ON p.type_plat = t.id;
-
 CREATE OR REPLACE VIEW v_plat AS(
     SELECT
         p.id as plat,
@@ -192,6 +184,8 @@ CREATE TABLE IF NOT EXISTS objectif(
 
 INSERT INTO objectif(designation) VALUES('Augmenter son poids'),
                                         ('Réduire son poids');
+
+INSERT INTO objectif(designation) VALUES('Atteindre son IMC ideal'),
 
 -------------------------------------- régime -------------------------------------------------
 
@@ -325,14 +319,6 @@ INSERT INTO tarifs_regime(regime, duree, tarif, poids) VALUES
 
 ----------------------------------------- vue -----------------------------------------
 
-SELECT
-    reg.id as regime,
-    reg.designation as nom_regime,
-    p.*
-FROM regime_plat r
-JOIN regime reg ON r.regime = reg.id
-JOIN v_plat p ON r.plat = p.plat;
-
 CREATE OR REPLACE VIEW v_regime_plat AS(
     SELECT
         reg.id as regime,
@@ -343,13 +329,6 @@ CREATE OR REPLACE VIEW v_regime_plat AS(
     JOIN v_plat p ON r.plat = p.plat
 );
 
-SELECT
-    reg.id as regime,
-    reg.designation as nom_regime,
-    s.*
-FROM regime_sport r
-JOIN regime reg ON r.regime = reg.id
-JOIN sport s ON r.sport = s.id;
 
 CREATE OR REPLACE VIEW v_regime_sport AS(
     SELECT
@@ -360,14 +339,6 @@ CREATE OR REPLACE VIEW v_regime_sport AS(
     JOIN regime reg ON r.regime = reg.id
     JOIN sport s ON r.sport = s.id
 );
-
-SELECT
-    t.regime,
-    reg.designation as nom_regime,
-    t.duree,
-    t.tarif
-FROM tarifs_regime t 
-JOIN regime reg ON t.regime = reg.id;
 
 CREATE OR REPLACE VIEW v_tarifs_regime AS(
     SELECT
@@ -421,3 +392,50 @@ CREATE TABLE IF NOT EXISTS porte_monnai(
     idUser VARCHAR(10)  REFERENCES utilisateur(id),
     valeur DECIMAL
 );
+
+CREATE SEQUENCE historyRegime_id_seq START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE IF NOT EXISTS historyRegime(
+    idHistoryRegime VARCHAR(10) PRIMARY KEY DEFAULT CONCAT('HIS',nextval('historyRegime_id_seq')),
+    idUser VARCHAR(10)  REFERENCES utilisateur(id),
+    idRegime VARCHAR(10)  REFERENCES regime(id),
+    date DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE IF NOT EXISTS code_user(
+    idCode VARCHAR(10) REFERENCES code(idCode),
+    idUser VARCHAR(10)  REFERENCES utilisateur(id)
+);
+
+ALTER TABLE code_user ADD CONSTRAINT code_user_constraint UNIQUE(idCode, idUser); 
+
+CREATE OR REPLACE VIEW v_code_user AS
+    SELECT code_user.idUser,utilisateur.nom ,code_user.idCode, code.etat
+    FROM code_user
+    JOIN code ON code.idCode = code_user.idCode
+    JOIN utilisateur ON utilisateur.id = code_user.idUser;
+
+CREATE OR REPLACE VIEW v_wallet AS 
+    SELECT porte_monnai.*, u.nom
+    FROM porte_monnai
+    JOIN utilisateur u ON u.id=porte_monnai.iduser
+;
+
+CREATE TABLE IF NOT EXISTS user_objectif(
+    idObjectif VARCHAR(10) REFERENCES objectif(id),
+    iduser VARCHAR(10)  REFERENCES utilisateur(id)
+);
+
+CREATE OR REPLACE VIEW v_user_objectif AS 
+    SELECT user_objectif.*, u.nom, o.designation
+    FROM user_objectif
+    JOIN utilisateur u ON u.id=user_objectif.iduser
+    JOIN objectif o ON o.id=user_objectif.idObjectif
+;
+
+INSERT INTO user_objectif(idObjectif,iduser) VALUES
+                ('OBJ1','UTI1'),
+                ('OBJ2','UTI2'),
+                ('OBJ3','UTI3');
+);
+

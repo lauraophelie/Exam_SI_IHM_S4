@@ -1,13 +1,16 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 // var_dump($allRegime);
 // var_dump($allObjectif);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
+    <title> Ajouter ma completion </title>
     <title>Ajouter ma completion</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -46,9 +49,9 @@ $base_url = base_url();
   
           <div class="col-sm-6">
             <label for="pound" class="form-label">Poids (en kg)</label>
-            <input type="number" step="1" max="635" class="form-control" id="pound" name="pound" placeholder="inserez votre poids" required>
+            <input type="number" step="1" max="635" class="form-control" id="pound" name="pound" placeholder="Insérer votre poids" required>
             <div class="invalid-feedback">
-              Veuillez inserez un poid valide.
+              Veuillez insérer un poid valide.
             </div>
           </div>
           <div class="col-sm-6">
@@ -70,18 +73,15 @@ $base_url = base_url();
             </div>
           </div>  
 
-          <!-- <div class="col-12">
+          <div class="col-12">
             <label for="regime" class="form-label">Regime</label>
             <select class="form-select" id="regime" name="regime" required>
               <option value="">Choisir un regime ...</option>
-              <?php  //foreach($allRegime as $valueReg) { ?>
-              <option value="<?php// echo $valueReg->id;?>"><?php //echo $valueReg->designation;?></option>
-              <?php  //} ?>
-            </select>
-            <div class="invalid-feedback">
-              Choisissez un regime.
-            </div>
-          </div> -->
+              <?php  foreach($allRegime as $valueReg) { ?>
+              <option value="<?php echo $valueReg->id;?>"><?php echo $valueReg->designation;?></option>
+              <?php  } ?>
+
+
 
           <div class="col-12">
             <label for="objectif" class="form-label">Objectif</label>
@@ -95,29 +95,15 @@ $base_url = base_url();
               Choisissez un objectif.
             </div>
           </div>
-  
-        <hr class="my-4">
-        <center>
-        <button class=" btn btn-outline-success btn-lg" type="submit">Approuver ma reservation</button>
-        </center>
+          <center>
+            <button class=" btn btn-outline-success btn-lg" type="submit"> Valider </button>
+          </center>
       </form>
     </div>
   </center>
   <script src="<?php echo base_url();?>/assets/js/form-validation.js"></script>
   <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 </section>
-  
-<footer class="footer mt-auto py-3 bg-dark">
-  <div class="container">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">Addresse: IT University, Antananarivo, Andoharanofotsy</div></li>
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">Contact: +261 12 345 67</div></li>
-      <li class="nav-item"><div class="nav-link px-2 " style="color:#0d6efd;">E-mail: Eemple@Gmail.Com</div></li>
-    </ul>
-    <p class="text-center " style="color:#0d6efd;">Examen S4 © 2023 IT University</p>
-  </div>
-</footer>
-
   <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 
 </body>

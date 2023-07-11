@@ -11,6 +11,7 @@ $base_url = base_url();
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link href="<?php echo base_url();?>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo site_url('assets/dist/css/style.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/style/Home.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -21,7 +22,7 @@ $base_url = base_url();
   <section class="home-section">
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
-    <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+    <h1 class="d-flex align-items-center fs-5 text-white mb-0" id="main-title">
       Trim Life Admin: Liste des Activités
     </h1>
   </div>

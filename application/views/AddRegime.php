@@ -1,9 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
 // var_dump($plat);
 // var_dump($sport);
 // var_dump($objectif);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -24,12 +26,15 @@ $base_url = base_url();
     <nav class="bd-header bg-dark py-3 fixed d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+
       Trim Life Admin: Modifier un Regime
+
     </h1>
   </div>
 </nav>
     <div class="container">
       <div class="text"></div>
+
       <div class="text-center" style="color:#0d6efd;"><p class="h2" >Modifier un Regime</p></div>
       <div class="my-4"></div>
       <center>
@@ -42,6 +47,7 @@ $base_url = base_url();
                 veuiller entrer un Nom valide.
               </div>
             </div>
+
             <div class="col-sm-6">
               <label for="regimeType" class="form-label">Objectif Du Regime</label>
               <select class="form-select" id="regimeType" name="regimeType" required>
@@ -60,6 +66,7 @@ $base_url = base_url();
             <div class="text-center" ><p class="h5" >choisir le(s) plat(s) qui compose le regime</p></div>
             <div class="col-12">
                 <div class="row">
+
                   <?php foreach($plat as $p) { ?>
                   <div class="col-md-6 col-lg-4 col-container">
                     <h3><img src="<?php echo base_url();?>/assets/img/profil.jpg"  width="50%" class="img-fluid" alt="" srcset=""></h3>
@@ -73,6 +80,7 @@ $base_url = base_url();
                 </div>
             </div>
             </div>
+
             <hr class="my-4">
             <div class="col-12">
               <div class="text-center" ><p class="h5" >choisir le(s) Activité(s) qui compose le regime</p></div>

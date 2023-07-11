@@ -91,6 +91,7 @@ class Controller_48h extends CI_Controller {
         $this->Admin->createRegime($tabData);
 
         $this->toListeRegime();
+
     }
 
     public function suppAct(){
@@ -101,6 +102,7 @@ class Controller_48h extends CI_Controller {
         $this->Admin->myDel('sport','id',$id);
 
         $this->toListActivite();
+
     }
 
     //------------------- WALLET -----------------------//
@@ -144,6 +146,11 @@ class Controller_48h extends CI_Controller {
             'genre' => $this->input->post('sexe'),
             'date_naissance' => $this->input->post('dtn')
         );
+        $this->load->model('Sign');
+        $val = $this->Sign->IsValuesNull($tabLog);
+        if($val==0){                                // procede si les valeurs ne sont pas nulles
+
+
         $tabObj = array(
             'idobjectif' => $this->input->post('objectif'),
             'iduser' => $this->input->post('id')
@@ -181,6 +188,10 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toAddCompletion(){
+
+        $dataRegime['allRegime'] = $this->getRegime();
+
+
         // $dataRegime['allRegime'] = $this->getRegime();
         // $this->load->helper('url');
 		// $this->load->view('AddCompletion',$dataRegime);
@@ -188,6 +199,7 @@ class Controller_48h extends CI_Controller {
         $this->load->model('Sign');
         $dataRegime['allObjectif'] = $this->Sign->getValues('objectif');
         // var_dump($dataRegime);
+
         $this->load->helper('url');
 		$this->load->view('AddCompletion',$dataRegime);
     }
@@ -206,6 +218,7 @@ class Controller_48h extends CI_Controller {
     }
 
     //----------------- REDIRECTION BACK -----------------//
+
     public function toUpdateRegime(){
         $idreg = $this->input->get('id');
         $this->load->model('Sign');
@@ -248,6 +261,7 @@ class Controller_48h extends CI_Controller {
     }
 
     public function toListeRegime(){
+
         $this->load->model('Sign');
         $regime['regime'] = $this->Sign->getValues('regime');
         $this->load->helper('url');

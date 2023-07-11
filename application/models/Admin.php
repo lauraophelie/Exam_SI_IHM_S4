@@ -1,4 +1,5 @@
 <?php
+
     class Admin extends CI_Model{
 
         //-------------------GEN--------------------//
@@ -12,6 +13,7 @@
             $this->db->update($table, $toUpdate);
             // echo $table." ".$cond." ".$value." ";
         }
+
 
         //---------------porte monnai----------------//
         function addToPorteMonnai($idCode,$idUser){
