@@ -7,9 +7,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?php echo site_url('assets/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <!-- <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="<?php echo base_url();?>/assets/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="<?php echo site_url('assets/dist/css/login.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/dist/css/login.css">
     <title>Login & sign up</title>
 </head>
 <body>
@@ -29,16 +30,16 @@
                 </div>
           
                 <div class="form login">
-                  <header> Sign up </header>
-                  <form action="<?php echo site_url('Controller_48h/login'); ?>" method="post">
+                  <header>Sign up</header>
+                  <form action="<?php echo base_url('Controller_48h/login'); ?>" method="post">
                     <input type="text" placeholder="Email address" name="sign_up_email" required />
                     <input type="password" placeholder="Password" name="sign_up_mdp" required />
-                    <a href="<?php echo site_url('Controller_48h/log_admin');?>" class="btn btn-light"> Admin </a>
+                    <a href="<?php echo base_url('Controller_48h/log_admin');?>" class="btn btn-light"> Admin</a>
+                    <a href="./forgotpassword.html">Forgot password?</a>
                     <input type="submit" class="btn btn-outline-success" value="Login" />
                   </form>
                 </div>
-          
-                <script src="<?php echo site_url('assets/dist/js/logSign.js'); ?>"></script>
+                <script src="<?php echo base_url();?>/assets/dist/js/logSign.js"></script>
               </section>
           </div>
         </div>

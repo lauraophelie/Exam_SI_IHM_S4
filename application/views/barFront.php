@@ -46,6 +46,7 @@
          <div class="profile-details">
            <div class="name_job">
              <div class="name">Log out</div>
+             <div class="job">Examen Rojo</div>
            </div>
          </div>
          <i class='bx bx-log-out' id="log_out" style="background-color: black;"></i>

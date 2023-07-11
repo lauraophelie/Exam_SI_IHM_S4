@@ -58,6 +58,9 @@ $base_url = base_url();
         </div>--->
       </div>
   </section>
+  </div>
+      </div>
+  </section>
 
   <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 

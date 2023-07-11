@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS details_utilisateur(
     poids DECIMAL
 );
 
-
 INSERT INTO utilisateur(nom, email, mdp) VALUES('Jean', 'jeans@gmail.com', '012345'),
                                                 ('Aline', 'Aline@gmail.com', '012345'),
                                                 ('John Doe', 'JohnDoe@gmail.com', '012345'),
@@ -55,8 +54,19 @@ INSERT INTO details_utilisateur(utilisateur, date_naissance, genre, taille, poid
                                 ('UTI4', '2001-12-25', 'F', 1.73, 55),
                                 ('UTI5', '1997-04-14', 'M', 1.80, 60);
 
-
 ----------------------------- vue utilisateur --------------------------------------
+
+SELECT
+    u.id as utilisateur,
+    u.nom,
+    u.email,
+    u.mdp as mot_de_passe,
+    d.date_naissance,
+    d.genre,
+    d.taille,
+    d.poids
+FROM utilisateur u
+JOIN details_utilisateur d ON u.id = d.utilisateur;
 
 CREATE OR REPLACE VIEW v_utilisateur AS(
     SELECT
@@ -319,7 +329,6 @@ CREATE OR REPLACE VIEW v_regime_plat AS(
     JOIN v_plat p ON r.plat = p.plat
 );
 
-SELECT
 
 CREATE OR REPLACE VIEW v_regime_sport AS(
     SELECT
@@ -356,6 +365,7 @@ INSERT INTO code(idCode, valeur, etat) VALUES
                         ('COD112234', 1000, 1),
                         ('COD192234', 1000, 1),
                         ('COD116234', 1000, 1),
+                        ('COD112234', 2000, 1),
                         ('COD112254', 2000, 1),
                         ('COD412254', 2000, 1),
                         ('COD212254', 2000, 1),
@@ -366,6 +376,7 @@ INSERT INTO code(idCode, valeur, etat) VALUES
                         ('COD156251', 10000, 1),
                         ('COD342251', 10000, 1),
                         ('COD212251', 10000, 1),
+                        ('COD112251', 15000, 1),
                         ('COD322251', 15000, 1),
                         ('COD342211', 15000, 1),
                         ('COD342221', 15000, 1),
@@ -426,3 +437,5 @@ INSERT INTO user_objectif(idObjectif,iduser) VALUES
                 ('OBJ1','UTI1'),
                 ('OBJ2','UTI2'),
                 ('OBJ3','UTI3');
+);
+

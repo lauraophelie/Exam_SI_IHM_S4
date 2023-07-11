@@ -48,6 +48,23 @@ $base_url = base_url();
           <tr>
             <th scope="row">1</th>
             <td>100% Sans glutene</td>
+        <a href="./AddRegime.html"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
+        <a href="<?php echo base_url('Controller_48h/toAddRegime');?>"><input type="button" value="Ajouter un regime" name="ajouter" id="ajouter" class="btn btn-success"></a>
+    </div>
+    <div class="my-4"></div>
+        <div class="text-center">
+            <table class="table table-borderless">
+          <thead style="background-color:#0d6efd; color: white;">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom du regime</th>
+            <th scope="col"> -- </th>
+          </tr>
+          </thead>
+          <tbody class="table-dark">
+          <tr>
+            <th scope="row">1</th>
+            <td>100% Sans glutene</td>
             <td>
                 <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
                 <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
@@ -57,6 +74,7 @@ $base_url = base_url();
           <tr>
             <th scope="row">1</th>
             <td>regime speciale carnivore</td>
+            <td>100.000 ar</td>
             <td>
                 <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
                 <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
@@ -66,6 +84,7 @@ $base_url = base_url();
           <tr>
             <th scope="row">1</th>
             <td>regime vegetarien</td>
+            <td>100.000 ar</td>
             <td>
                 <a href="#"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
                 <a href="./updateRegime.html"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
@@ -77,7 +96,27 @@ $base_url = base_url();
         </div>
       </div>
   </section>
-
+            <?php $i =1; foreach($regime as $r) { ?>
+          <tr>
+            <th scope="row"><?php echo $i; $i++; ?></th>
+            <td><?php echo $r->designation ; ?></td>
+            <td>
+                <a href="<?php echo base_url('Controller_48h/supReg?id='); echo $r->id ;?>"><input type="button" value="Supprimer" name="Supprimer" id="refuser" class="btn btn-outline-danger"></a>
+                <a href="<?php echo base_url('Controller_48h/toUpdateRegime?id='); echo $r->id ;?>"><input type="button" value="modifier" name="modifier" id="modifier" class="btn btn-outline-warning"></a>
+                <a href="#"><input type="button" value="details" name="details" id="details" class="btn btn-outline-info"></a>
+            </td>
+          </tr>
+          <?php } ?>
+          </tbody>
+        </table>
+        </div>
+        <!-- <div class="text">
+          vous verrez ici chers Administrateur la liste des regimes diponible vous pouvez ajouter,
+          supprimer, modifier et voir les details des regimes comme bon vous le semble. 
+        </div> -->
+      </div>
+  </section>
+ 
   <script src="<?php echo base_url();?>/assets/js/Home.js"></script>
 
 </body>
